@@ -1,0 +1,19 @@
+{
+  "name": "moviedash",
+  "version": "1.0.0",
+  "description": "Plan your movie night",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atcastle/radioactiveOrca.git"
+  },
+  "author": "radioactiveOrca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atcastle/radioactiveOrca/issues"
+  },
+  "homepage": "https://github.com/atcastle/radioactiveOrca#readme"
+}
