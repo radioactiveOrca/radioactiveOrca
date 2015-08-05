@@ -1,0 +1,21 @@
+{
+  "name": "moviedashclient",
+  "version": "0.0.1",
+  "homepage": "https://github.com/radioactiveOrca/radioactiveOrca.git",
+  "authors": [
+    "radioactiveOrca"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15"
+  }
+}
