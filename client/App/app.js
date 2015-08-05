@@ -1,4 +1,8 @@
 angular.module('moviedash', [
+  'moviedash.landing',
+  'moviedash.movies',
+  'moviedash.details',
+  'moviedash.services',
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -8,17 +12,17 @@ angular.module('moviedash', [
   $stateProvider
     .state('landing', {
       url : '/landing',
-      // controller: 'LandingController',
+      controller: 'LandingCtrl',
       templateUrl: 'app/landing/landing.html'
     })
     .state('movies', {
       url : '/movies',
-      // controller: 'MoviesController',
+      controller: 'MoviesCtrl',
       templateUrl: 'app/movies/movies.html'
     })
     .state('details', {
       url: '/details',
-      // controller: 'DetailsController',
+      controller: 'DetailsCtrl',
       templateUrl: 'app/details/details.html'
     });
 });
