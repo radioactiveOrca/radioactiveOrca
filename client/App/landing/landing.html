@@ -1,6 +1,6 @@
 <!-- shows form when geolocation errors out -->
 <form name="zipCode" ng-submit="zipSubmit" ng-if="zip">
-  <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" required>
+  <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" required>
   <!-- disables button if input is not valid -->
   <button ng-disabled="zipCode.$invalid">Go</button>
 </form>
