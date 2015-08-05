@@ -8,17 +8,17 @@ angular.module('moviedash', [
   $stateProvider
     .state('landing', {
       url : '/landing',
-      templateUrl: 'app/landing/landing.html',
-      controller: 'LandingController'
+      // controller: 'LandingController',
+      templateUrl: 'app/landing/landing.html'
     })
     .state('movies', {
       url : '/movies',
-      templateUrl: 'app/movies/movies.html',
-      controller: 'MoviesController'
+      // controller: 'MoviesController',
+      templateUrl: 'app/movies/movies.html'
     })
     .state('details', {
       url: '/details',
-      templateUrl: 'app/details/details.html',
-      controller: 'DetailsController'
+      // controller: 'DetailsController',
+      templateUrl: 'app/details/details.html'
     });
 });
