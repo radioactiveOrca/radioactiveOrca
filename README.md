@@ -1,6 +1,6 @@
 # Movie Dash
 
-> Pithy project description
+Make finding a movie to watch a breeze!
 
 ## Team
 
@@ -20,17 +20,17 @@
 
 ## Usage
 
-> Some usage instructions
+Movie Dash works in a browser. Just open it up.
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Express 4.13.3
+- Angular 
 
 ## Development
+
+8/5/15: Development begun.
 
 ### Installing Dependencies
 
@@ -39,6 +39,7 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
+cd client
 bower install
 ```
 
