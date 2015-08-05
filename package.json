@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/atcastle/radioactiveOrca/issues"
   },
-  "homepage": "https://github.com/atcastle/radioactiveOrca#readme"
+  "homepage": "https://github.com/atcastle/radioactiveOrca#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "request": "^2.60.0",
+    "url-parse": "^1.0.2"
+  }
 }
