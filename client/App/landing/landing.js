@@ -1,6 +1,6 @@
 var app = angular.module('moviedash.landing', []);
 
-app.controller('landingCtrl', function($scope, $location, MovieClient) {
+app.controller('LandingCtrl', function($scope, $location, MovieClient) {
 
   //Checks if geolocation is available, shows form if not
   if (!navigator.geolocation) {
