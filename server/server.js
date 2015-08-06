@@ -12,7 +12,13 @@ var port = process.env.PORT || 8080;
 var app = express();
 app.use(bodyParser.json())
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/movies');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+  // yay!
+});
 
 app.use(express.static('../client'));
 
