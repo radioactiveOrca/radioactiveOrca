@@ -24,7 +24,21 @@ module.exports = function(theaters) {
     ...
   ]
   */
-  var results = [];
+var calculateTarget = function(transit) {
+  var currentTime = new Date();
+  return currentTime.setMinutes(currentTime.getMinutes + transit);
+};
+
+var convertShowTime = function(showtime) {
+  var today = new Date();
+  var timeArray = showtime.split(/\D/);
+  if (showtime.indexOf('pm') !== -1 && +timeArray[0] !== 12) {
+    +timeArray[0] + 12;
+  }
+  today.setHours(+timeArray[0]);
+  today.setMinutes(+timeArray[1]);
+  return today;
+};
   //for each theater
     //capture transitTime
     //add currentTime to transitTime
@@ -36,36 +50,28 @@ module.exports = function(theaters) {
               //if yes
                 //create a new object
 var createObject = function(theaters) {
-    var results = [];
-    theaters.forEach(function(theater) {
-        console.log(theater.name)
-        var transitTime = parseInt(theater.transitTime)  * 60000;
-        console.log(transitTime)
-        var targetTime = new Date(new Date().getTime() + transitTime).toTimeString().split(/\D/).slice(0,2);
-        if (targetTime[0] > 12) {
-            targetTime[0] = targetTime[0] - 12;
-        }
-        console.log(targetTime)
-       theater.movies.forEach(function(movie) {
-           console.log(movie.name)
-           movie.showtimes.forEach(function(showtime) {
-               var showTime = showtime.split(/\D/);
-               console.log(showTime)
-               if (+showTime[0] >= +targetTime[0] 
-               && +showTime[0] <= +targetTime[0] + 1 
-               && +showTime[1] >= +targetTime[0] + 5
-               && +showTime[1] <= +targetTime[1] + 35) { 
-                   console.log({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name})
-                   results.push({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name}) }
-           })
-       }) 
-    });
-    return results;
+  var results = [];
+  theaters.forEach(function(theater) {
+    console.log(theater.name);
+    var transitTime = parseInt(theater.transitTime);
+    console.log(transitTime);
+    var targetTime = calculateTarget(transitTime);
+    console.log(targetTime);
+    theater.movies.forEach(function(movie) {
+      console.log(movie.name)
+      movie.showtimes.forEach(function(showtime) {
+        var min = convertShowTime(showtime);
+        var max = convertShowTime(showtime);
+        min = min.setMinutes(min.getMinutes + 5);
+        max = max.setMinutes(max.getMinutes + 35);
+
+      if (min <= targetTime && max >= targetTime){ 
+        console.log({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name})
+        results.push({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name}) }
+      })
+    }) 
+  });
+  return results;
 }
                 
 
-
-
-  return results;
-
-}
