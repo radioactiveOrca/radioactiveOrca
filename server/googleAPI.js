@@ -2,9 +2,6 @@ var qs = require('querystring');
 var request = require('request');
 var secret = require('../googleKey');
 
-// origins=Bobcaygeon+ON|41.43206,-81.38992
-// destinations=Darling+Harbour+NSW+Australia|24+Sussex+Drive+Ottawa+ON|Capitola+CA
-
 var DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
 
 var DistanceMatrix = function() {
@@ -35,17 +32,13 @@ var format = function(params) {
 };
 
 DistanceMatrix.prototype.query = function(params, callback) {
-  var query = format(params);
-
-  console.log("googleAPI.js: query string", query);
-  request(DISTANCE_API_URL + query, function(err, response, body) {
+  var querystring = format(params);
+  request(DISTANCE_API_URL + querystring, function(err, response, body) {
     if (err) {
       return console.error (err);
     }
     callback(JSON.parse(body));
   });
 };
-
-
 
 module.exports = new DistanceMatrix();
