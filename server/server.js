@@ -3,6 +3,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var url = require('url-parse');
+var requestHandler = require('../server/request-handler');
 
 var port = process.env.PORT || 8080;
 
