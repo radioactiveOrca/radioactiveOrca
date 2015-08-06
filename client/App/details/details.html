@@ -1,14 +1,14 @@
-<div class="details-panel">
-  <div class="movie-info">
-    <p>{{movie.synopsis}} </p>
-    <img ng-src="{{movie.image}}"/>
+<div class="details-panel container">
+  <div class="movie-info row">
+    <p class="lead col-sm-4 col-xs-12">{{movie.synopsis}} </p>
+    <img class="img-rounded col-sm-8 col-xs-12" ng-src="{{movie.image}}"/>
   </div>
-  <div class="route-info">
-    <img src="../../assets/map.png"/>
-    <div class="info-list">
+  <div class="route-info row">
+    <img src="../../assets/map.png" class="col-sm-8 col-xs-12"/>
+    <div class="info-list col-sm-4 col-xs-12 text-center">
       <p>{{movie.theater}}</p>
-      <p>{{movie.commute}}</p>
-      <p>{{movie.time}}</p>
+      <p class="text-muted">{{movie.commute}}</p>
+      <h3>{{movie.time}}</h3>
       <p>{{movie.score}}</p>
     </div>
   </div>

@@ -24,3 +24,15 @@
   height: 2.5em;
   font-size: inherit;
 }
+
+.movie-panel {
+  margin-top: 100px;
+}
+
+.details-panel {
+  margin-top: 100px;
+}
+
+.route-info {
+  margin-top: 40px;
+}

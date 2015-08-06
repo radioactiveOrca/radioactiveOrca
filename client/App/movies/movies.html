@@ -1,11 +1,11 @@
-<div class="movie-panel" ng-controller="MoviesCtrl">
-  <div class="movie-container" ng-repeat="movie in movies">
-    <img ng-src="{{movie.image}}"/>
-    <div class="movie-snippet">
-      <h3>{{movie.title}}</h3>
-      <p>{{movie.theater}}</p>
+<div class="movie-panel container" ng-controller="MoviesCtrl">
+  <div class="movie-container col-sm-4 col-xs-12" ng-repeat="movie in movies">
+    <img class="center-block img-rounded" ng-src="{{movie.image}}"/>
+    <div class="movie-snippet text-center">
+      <h2>{{movie.title}}</h2>
+      <p class="text-muted">{{movie.theater}}</p>
       <p>{{movie.commute}}</p>
-      <p>{{movie.showtime}}</p>
+      <h4>{{movie.showtime}}</h4>
     </div>
   </div>
 </div>
