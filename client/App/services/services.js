@@ -1,14 +1,20 @@
 var app = angular.module('moviedash.services', []);
 
 app.factory('MovieClient', function($http) {
-  var results;
+  var movieInfo;
+  var setResults = function(results) {
+    movieInfo = results;
+  };
+  var getResults = function() {
+    return movieInfo;
+  };
   var getTheaters = function(location) {
     return $http({
       method: 'POST',
       data: location,
       url: '/api/movies',
       success: function(response) {
-         results = response;
+         return response;
       },
       error: function(err){
         console.log(err);
@@ -17,6 +23,7 @@ app.factory('MovieClient', function($http) {
   };
   return {
     getTheaters: getTheaters,
-    results: results
+    setResults: setResults,
+    getResults: getResults
   };
 });

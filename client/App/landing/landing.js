@@ -15,8 +15,9 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient) {
 
     $scope.location = {latitude: latitude, longitude: longitude};
     //sends location to factory
-    MovieClient.getTheaters($scope.location).then(function() {
+    MovieClient.getTheaters($scope.location).then(function(response) {
       //redirects to movie route
+      MovieClient.setResults(response);
       $location.path('/movies');
     });
   }
@@ -32,7 +33,8 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient) {
 
   //handles submit from form and sends zip to factory
   $scope.zipSubmit = function() {
-    MovieClient.getTheaters({zip: $scope.zip}).then(function() {
+    MovieClient.getTheaters({zip: $scope.zip}).then(function(response) {
+      MovieClient.setResults(response);
       $location.path('/movies');
     });
   };
