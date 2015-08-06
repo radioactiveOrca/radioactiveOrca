@@ -23,5 +23,11 @@
     "request": "^2.60.0",
     "showtimes": "^1.7.0",
     "url-parse": "^1.0.2"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.7",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6"
   }
 }
