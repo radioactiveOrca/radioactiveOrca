@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Movie = new mongoose.Schema({
   title: String,
-  urlPoster: String,
+  poster: String,
   synposis: String
 })
 

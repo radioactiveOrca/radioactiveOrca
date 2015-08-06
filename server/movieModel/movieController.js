@@ -3,10 +3,10 @@ var Q = require('q');
 
 module.exports = {
 
-  findAllMovies = function(req, res, next) {
+  findAllMovies: function(req, res, next) {
     var findAllMovies = Q.nbind(Movie.find, Movie);
 
-    findAll({})
+    findAllMovies({})
       .then(function (movies) {
         // Send back to packer
         res.json(movies);
@@ -17,16 +17,16 @@ module.exports = {
   },
 
   // TODO: create add movie function
-  addMovie = function(req, res, next) {
+  addMovie: function(film) {
     var createMovie = Q.nbind(Movie.create, Movie);
     var findMovie = Q.nbind(Movie.findOne, Movie);
 
     // Checks if the movie exists and if it does
     // Sends the movie up to packer
-    findMovie({title: title})
+    findMovie({title: film.name})
       .then(function(match){
         if (match) {
-          res.send(match);
+          return match;
         } else {
           // fetch the movie title, poster, synposis
           // from packer and then store it in the DB
