@@ -1,3 +1,5 @@
+var movieCtrler = require('../server/movieModel/movieController.js');
+
 module.exports = function(movies, callback) {
   var index = 0;
   var results = [];
@@ -11,6 +13,7 @@ module.exports = function(movies, callback) {
       //check the database to see if we already have information for that movie
       checkForMovie(movie, function(found) {
       //if successfully found,
+      console.log("------------>")
         if (found) {
         //pack that information in with the movies list and continue to next movie
           packInfo(found, index);
@@ -47,8 +50,11 @@ module.exports = function(movies, callback) {
     results.push(movie);
   }
   var checkForMovie = function(movie, callback) {
+    // callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
+    console.log("Checking movie")
+    callback(movieCtrler.addMovie(movie);
+    // callback(movieCtrler.addMovie({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"}));
     //STUB:
-    callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
     //TODO:
     //Interact with the database here
     //Call callback on movie data if it exists, or null if it doesn't
@@ -61,6 +67,7 @@ module.exports = function(movies, callback) {
   var addMovieToDB = function(moviedata) {
     //TODO:
     //Handle add to database;
+    movieCtrler.addMovie(moviedata);
   }
   
   movieLookupHelper();
