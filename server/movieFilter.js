@@ -37,7 +37,7 @@ module.exports = function(theaters) {
         var showTime = convertShowTime(showtime);
 
         if (minTargetTime <= showTime && showTime <= maxTargetTime) {
-          results.push({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name});
+          results.push({showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name, imdbLink: movie.imdb, trailerLink: movie.trailer, theaterAddress: theater.address});
         }
       });
     });
