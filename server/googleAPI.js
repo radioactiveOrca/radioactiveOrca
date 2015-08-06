@@ -36,11 +36,13 @@ var format = function(params) {
 
 DistanceMatrix.prototype.query = function(params, callback) {
   var query = format(params);
+
+  console.log("googleAPI.js: query string", query);
   request(DISTANCE_API_URL + query, function(err, response, body) {
     if (err) {
       return console.error (err);
     }
-    callback(body);
+    callback(JSON.parse(body));
   });
 };
 

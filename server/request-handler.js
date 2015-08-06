@@ -1,5 +1,6 @@
 var showtimes = require('showtimes');
 var q = require('q');
+var appendTransitTime= require('./appendTransitTime');
 
 
 // function to enter lng & lat into showtimes parameter
@@ -12,7 +13,10 @@ exports.getShows = function(req,res) {
   s.getTheaters(function(err, theaters) {
     // Should return an array of theaters
     console.log(theaters);
-    res.status(200).send(theaters);
+    appendTransitTime(req.body.location, theaters, function(results) {
+      console.log(results);
+      res.status(200).send(theaters);
+    });
   });
 };
 
