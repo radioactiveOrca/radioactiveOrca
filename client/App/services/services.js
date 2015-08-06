@@ -11,7 +11,7 @@ app.factory('MovieClient', function($http) {
   var getTheaters = function(location) {
     return $http({
       method: 'POST',
-      data: location,
+      data: {location: location},
       url: '/api/movies',
       success: function(response) {
          return response;
