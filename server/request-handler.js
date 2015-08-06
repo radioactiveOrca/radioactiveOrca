@@ -6,13 +6,13 @@ var q = require('q');
 
 
 // Need to see if longitude & latitude is one argument?
-exports.getShows = function(location) {
+exports.getShows = function(req,res) {
 
-  var s = showtimes(location, {pageLimit: 1});
+  var s = showtimes(req.body.location, {pageLimit: 1});
   s.getTheaters(function(err, theaters) {
     // Should return an array of theaters
     console.log(theaters);
-    return theaters;
+    res.status(200).send(theaters);
   });
 };
 

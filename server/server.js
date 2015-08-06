@@ -19,9 +19,7 @@ app.get('/', function(req, res) {
   res.send("SITE IS UP");
 });
 
-app.post('/api/movies', function(req, res){
-  requestHandler.getShows(req.body.location);
-})
+app.post('/api/movies', requestHandler.getShows);
 
 app.listen(port, function() {
   console.log('Listening at localhost:8080');

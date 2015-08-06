@@ -1,0 +1,26 @@
+.landing-cont {
+  background: url('../Assets/background.jpg');
+  background-size: cover; 
+  height: 100vh;
+  width: 100vw;
+}
+
+.landing {
+  background: rgba(255,255,255,.9);
+  position: relative;
+  top: 20vh;
+  padding: 10%;
+  border-radius: 10px;
+  color: slateblue;
+  font-size: 1.15em;
+  box-shadow: inset 0 0 10px 3px #333;
+}
+
+.divider {
+  margin: 20px;
+}
+
+.button {
+  height: 2.5em;
+  font-size: inherit;
+}

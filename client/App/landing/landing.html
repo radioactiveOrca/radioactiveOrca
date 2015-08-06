@@ -1,7 +1,17 @@
-<!-- shows form when geolocation errors out -->
-<form name="zipCode" ng-submit="zipSubmit" ng-if="zip">
-  <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" required>
-  <!-- disables button if input is not valid -->
-  <button ng-disabled="zipCode.$invalid">Go</button>
-</form>
-{{location}}
+<div class="landing-cont">
+  <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <div class="btn form-control btn-info button" ng-click="findLocation()">Use Current Location</div>
+
+    <center><div class="divider">OR</div></center>
+
+    <!-- shows form when geolocation errors out -->
+    <form name="zipCode" ng-submit="zipSubmit()">
+      <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" class="form-control" required>
+      <!-- disables button if input is not valid -->
+      <button class="btn btn-info form-control button" ng-disabled="zipCode.$invalid">Go</button>
+    </form>
+    <center><img ng-if="isLoading" src="../../Assets/spiffygif_46x46.gif"><center>
+    {{location}}
+    <div ng-if="error">{{error}}</div>
+  </div>
+</div>
