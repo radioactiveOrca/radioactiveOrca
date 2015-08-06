@@ -3,6 +3,8 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var url = require('url-parse');
+var requestHandler = require('../server/request-handler');
+
 
 var port = process.env.PORT || 8080;
 
@@ -12,8 +14,13 @@ var app = express();
 app.use(express.static('../client'));
 
 app.get('/', function(req, res) {
+  // requestHandler.getShows(94134);
   res.send("SITE IS UP");
 });
+
+app.post('/api/movies', function(req, res){
+  requestHandler.getShows(req.body.location);
+})
 
 app.listen(port, function() {
   console.log('Listening at localhost:8080');
