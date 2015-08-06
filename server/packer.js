@@ -20,6 +20,8 @@ module.exports = function(movies, callback) {
         //hit IMDB for the required information
           getInforFromIMDB(movie, function (data) {
             if (data) {
+              //Add this data to the database
+              addMovieToDB(data);
               //Pack that information in with the movies list and continue to next movie
               packInfo(data, index);
               index++;
@@ -27,24 +29,41 @@ module.exports = function(movies, callback) {
             } else {
               //No data back from imdb
               //TODO: HANDLE ERROR HERE???
+              index++;
+              movieLookupHelper();
             }
           });
         }
       });
     }
   }
-  var checkForMovie = function(movie, callback) {
-    //Interact with the database here
-    //Call callback on movie data if it exists, or null if it doesn't
-  }
-  var getInfoFromIMDB = function(movie, callback) {
-    // IMDB API call here
-    //call callback on movie data 
-  }
+  
+  
+  
   var packInfo = function(movieData, index) {
     var movie = movies[index];
     movie.poster = movieData.poster;
     movie.synopsis = movieData.synopsis;
     results.push(movie);
   }
+  var checkForMovie = function(movie, callback) {
+    //STUB:
+    callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
+    //TODO:
+    //Interact with the database here
+    //Call callback on movie data if it exists, or null if it doesn't
+  }
+  var getInfoFromIMDB = function(movie, callback) {
+    //TODO: 
+    // IMDB API call here
+    //call callback on movie data 
+  }
+  var addMovieToDB = function(moviedata) {
+    //TODO:
+    //Handle add to database;
+  }
+  
+  movieLookupHelper();
+  
 }
+     
