@@ -1,4 +1,5 @@
 var movieCtrler = require('../server/movieModel/movieController.js');
+var request = require('request');
 
 module.exports = function(movies, callback) {
   var index = 0;
@@ -13,15 +14,15 @@ module.exports = function(movies, callback) {
       //check the database to see if we already have information for that movie
       checkForMovie(movie, function(found) {
       //if successfully found,
-      // console.log("------------>", found)
         if (found) {
-          console.log("THIS IS FOUND")
+          console.log("I AM FOUND")
         //pack that information in with the movies list and continue to next movie
           packInfo(found, index);
           index++;
           movieLookupHelper();
         } else {
         //hit IMDB for the required information
+        
           getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
@@ -51,10 +52,8 @@ module.exports = function(movies, callback) {
     results.push(movie);
   }
   var checkForMovie = function(movie, callback) {
-    // callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
-    console.log("Checking movie")
-    // callback(movieCtrler.addMovie(movie);
-    callback(movieCtrler.addMovie({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"}));
+    callback(movieCtrler.addMovie(movie));
+    
     //STUB:
     //TODO:
     //Interact with the database here
@@ -63,15 +62,25 @@ module.exports = function(movies, callback) {
   var getInfoFromIMDB = function(movie, callback) {
     //TODO: 
     // IMDB API call here
-    // var movieObj = "http://www.omdbapi.com/?t=“ + movie.title + "&y=&plot=short&r=json";
-
+    console.log("-->>>>>>>>>>", movie)
+    // var movieObj = "http://www.omdbapi.com/?i=“ + movie.id + "&plot=short&r=json"
+    request.get("http://www.omdbapi.com/?i=" + movie.movieName + "&plot=short&r=json")
+            .on('response', function(response){
+              console.log("IMDB IS WORKING")
+              var film = {};
+              film.title = response.Title;
+              film.poster = response.Poster;
+              film.synposis = response.Plot;
+              console.log(film)
+              callback(film);
+            });
     
     //call callback on movie data 
   }
   var addMovieToDB = function(moviedata) {
     //TODO:
     //Handle add to database;
-    movieCtrler.addMovie(moviedata);
+    return movieCtrler.addMovie(moviedata);
   }
   
   movieLookupHelper();

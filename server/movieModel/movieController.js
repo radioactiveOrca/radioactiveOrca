@@ -15,11 +15,10 @@ module.exports = {
         if (err) {
           console.log(err)
         }
-        console.log("0000000000->", match)
         if (match) {
           return match;
         } else {
-          console.log("IM HERE")
+          
           // fetch the movie title, poster, synposis
           // from packer and then store it in the DB
           var newMovie = new movie({
