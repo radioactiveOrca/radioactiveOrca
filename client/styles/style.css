@@ -36,3 +36,8 @@
 .route-info {
   margin-top: 40px;
 }
+
+.movie-container {
+  height: 600px;
+  margin-bottom: 50px;
+}

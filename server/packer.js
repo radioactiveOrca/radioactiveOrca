@@ -25,7 +25,7 @@ module.exports = function(movies, callback) {
           getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
-              addMovieToDB(data);
+              addMovieToDB(data, movie);
               //Pack that information in with the movies list and continue to next movie
               packInfo(data, index);
               index++;
