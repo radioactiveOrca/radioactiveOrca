@@ -22,6 +22,10 @@ exports.getShows = function(req,res) {
     appendTransitTime(loc, theaters, function(results) {
       console.log(results);
       var filteredResults = filter(results);
+      if (filteredResults.length === 0) {
+        res.send(null);
+        return;
+      }
       packer(filteredResults, function(movies) {
         res.status(200).send(movies);
       });
