@@ -4,7 +4,6 @@ angular.module('moviedash', [
   'moviedash.details',
   'moviedash.services',
   'ui.router',
-  'ngMock'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
 

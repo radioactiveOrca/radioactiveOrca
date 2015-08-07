@@ -1,6 +1,8 @@
 var showtimes = require('showtimes');
 var q = require('q');
 var appendTransitTime= require('./appendTransitTime');
+var filter = require('./movieFilter');
+var packer = require('./packer')
 
 
 // function to enter lng & lat into showtimes parameter
@@ -15,7 +17,11 @@ exports.getShows = function(req,res) {
     console.log(theaters);
     appendTransitTime(req.body.location, theaters, function(results) {
       console.log(results);
-      res.status(200).send(theaters);
+      var filteredResults = filter(results);
+      packer(filteredResults, function(movies) {
+        res.status(200).send(movies);
+      })
+
     });
   });
 };
