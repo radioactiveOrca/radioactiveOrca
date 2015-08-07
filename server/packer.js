@@ -1,3 +1,6 @@
+var movieCtrler = require('../server/movieModel/movieController.js');
+var request = require('request');
+
 module.exports = function(movies, callback) {
   var index = 0;
   var results = [];
@@ -12,13 +15,15 @@ module.exports = function(movies, callback) {
       checkForMovie(movie, function(found) {
       //if successfully found,
         if (found) {
+          console.log("I AM FOUND")
         //pack that information in with the movies list and continue to next movie
           packInfo(found, index);
           index++;
           movieLookupHelper();
         } else {
         //hit IMDB for the required information
-          getInforFromIMDB(movie, function (data) {
+        
+          getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
               addMovieToDB(data);
@@ -47,8 +52,9 @@ module.exports = function(movies, callback) {
     results.push(movie);
   }
   var checkForMovie = function(movie, callback) {
+    callback(movieCtrler.addMovie(movie));
+    
     //STUB:
-    callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
     //TODO:
     //Interact with the database here
     //Call callback on movie data if it exists, or null if it doesn't
@@ -56,11 +62,39 @@ module.exports = function(movies, callback) {
   var getInfoFromIMDB = function(movie, callback) {
     //TODO: 
     // IMDB API call here
+    // console.log("-->>>>>>>>>>", movie)
+    // var movieObj = "http://www.omdbapi.com/?i=“ + movie.id + "&plot=short&r=json"
+    request("http://www.omdbapi.com/?i=" + movie.id + "&plot=short&r=json", function(error, response, body){
+      
+      body = JSON.parse(body);
+
+      var film = {};
+      film.title = body.Title;
+      film.poster = body.Poster;
+      film.synposis = body.Plot;
+    
+      callback(film);
+    })
+            // .on('response', function(response){
+            //   console.log("IMDB IS WORKING", response.body)
+              // var film = {};
+              // film.title = response.body.Title;
+              // film.poster = response.body.Poster;
+              // film.synposis = response.Plot;
+              // console.log(film)
+              // callback(film);
+            // });
+    // request({
+    //   url: "http://www.omdbapi.com/?i=" + movie.id + "&plot=short&r=json",
+    //   method: 'GET'
+    // })
+    
     //call callback on movie data 
   }
   var addMovieToDB = function(moviedata) {
     //TODO:
     //Handle add to database;
+    return movieCtrler.addMovie(moviedata);
   }
   
   movieLookupHelper();

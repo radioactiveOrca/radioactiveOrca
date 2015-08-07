@@ -1,6 +1,6 @@
 var qs = require('querystring');
 var request = require('request');
-var secret = require('../googleKey');
+var secret = require('./googleKey');
 
 var DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
 

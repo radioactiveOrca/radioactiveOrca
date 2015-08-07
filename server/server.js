@@ -4,6 +4,7 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var url = require('url-parse');
 var requestHandler = require('../server/request-handler');
+var mongoose = require('mongoose');
 
 
 var port = process.env.PORT || 8080;
@@ -11,6 +12,14 @@ var port = process.env.PORT || 8080;
 var app = express();
 app.use(bodyParser.json())
 
+mongoose.connect('mongodb://localhost/movies');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+  console.log("YAY")
+  // yay!
+});
 
 app.use(express.static('../client'));
 

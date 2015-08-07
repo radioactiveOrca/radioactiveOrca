@@ -10,12 +10,12 @@ var packer = require('./packer')
 
 // Need to see if longitude & latitude is one argument?
 exports.getShows = function(req,res) {
+  var loc = req.body.location.toString();
 
-  var s = showtimes(req.body.location, {pageLimit: 1});
+  var s = showtimes(loc, {pageLimit: 1});
   s.getTheaters(function(err, theaters) {
     // Should return an array of theaters
-    console.log(theaters);
-    appendTransitTime(req.body.location, theaters, function(results) {
+    appendTransitTime(loc, theaters, function(results) {
       console.log(results);
       var filteredResults = filter(results);
       packer(filteredResults, function(movies) {
