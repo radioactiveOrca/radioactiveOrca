@@ -1,6 +1,6 @@
 var app = angular.module('moviedash.landing', []);
 
-app.controller('LandingCtrl', function($scope, $location, MovieClient) {
+app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
 
   //Checks if geolocation is available, shows form if not
   $scope.findLocation = function() {
@@ -38,10 +38,14 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient) {
   $scope.zipSubmit = function() {
     console.log("clicked!");
     $scope.isLoading = true;
-    MovieClient.getTheaters($scope.zip).then(function(response) {
-      $scope.isLoading = false;
-      MovieClient.setResults(response);
-      $location.path('/movies');
+    $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).then(function (response) {
+      var lat = response.data.results[0].geometry.location.lat;
+      var long = response.data.results[0].geometry.location.lng;
+      MovieClient.getTheaters(lat + ', ' + long).then(function(response) {
+          $scope.isLoading = false;
+          MovieClient.setResults(response);
+          $location.path('/movies');
+      });
     });
   };
 });
