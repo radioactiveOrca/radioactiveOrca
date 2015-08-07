@@ -39,6 +39,7 @@ module.exports = function(theaters) {
         var showTime = convertShowTime(showtime);
 
         if (minTargetTime <= showTime && showTime <= maxTargetTime) {
+          //extract imdb id from url
           var imdbArr = movie.imdb.split('/');
           var imdb = imdbArr[imdbArr.length - 2];
           results.push({id: imdb, showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name, imdbLink: movie.imdb, trailerLink: movie.trailer, theaterAddress: theater.address});
