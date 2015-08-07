@@ -1,4 +1,5 @@
 describe('LandingCtrl', function() {
+  /*
   beforeEach(module('moviedash'));
   beforeEach(module('moviedash.landing'));
   beforeEach(module('moviedash.services'));
@@ -27,6 +28,7 @@ describe('LandingCtrl', function() {
       });
       expect(ctrl).toBeDefined();
   }));
+*/
   // var $scope, $rootScope, createController;
   // console.log("BEFORE INJECTION <-----------------------")
   // beforeEach(inject(function($injector) {
