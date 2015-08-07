@@ -25,7 +25,7 @@ module.exports = function(movies, callback) {
           getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
-              addMovieToDB(data, movie);
+              addMovieToDB(data, movie.id);
               //Pack that information in with the movies list and continue to next movie
               packInfo(data, index);
               index++;
@@ -51,8 +51,8 @@ module.exports = function(movies, callback) {
     results.push(movie);
   };
   var checkForMovie = function(movie, callback) {
-    callback(movieCtrler.addMovie(movie));
-    
+    //callback(movieCtrler.addMovie(movie));
+    movieCtrler.findMovie(movie.id, callback);
     //STUB:
     //TODO:
     //Interact with the database here
@@ -89,12 +89,13 @@ module.exports = function(movies, callback) {
     // })
     
     //call callback on movie data 
-  };
-  var addMovieToDB = function(moviedata) {
+
+  }
+  var addMovieToDB = function(imdbData, id) {
     //TODO:
     //Handle add to database;
-    return movieCtrler.addMovie(moviedata);
-  };
+    return movieCtrler.addMovie(imdbData, id);
+  }
   
   movieLookupHelper();
   
