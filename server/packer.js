@@ -25,7 +25,7 @@ module.exports = function(movies, callback) {
           getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
-              addMovieToDB(data, movie);
+              addMovieToDB(data, movie.id);
               //Pack that information in with the movies list and continue to next movie
               packInfo(data, index);
               index++;
@@ -91,10 +91,10 @@ module.exports = function(movies, callback) {
     //call callback on movie data 
 
   }
-  var addMovieToDB = function(imdbData, movie) {
+  var addMovieToDB = function(imdbData, id) {
     //TODO:
     //Handle add to database;
-    return movieCtrler.addMovie(imdbData, movie);
+    return movieCtrler.addMovie(imdbData, id);
   }
   
   movieLookupHelper();
