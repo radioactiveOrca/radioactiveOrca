@@ -7,8 +7,8 @@ angular.module('moviedash.details', [])
 
 
   // Navigation info
-  $scope.origin = '37.783529,-122.408553';
+  $scope.origin = selected.getLocation();
   $scope.destination = $scope.movie.theaterAddress;
+  $scope.travelMode = selected.getModality() ? selected.getModality().toUpperCase() : 'DRIVING';
 
 });
-
