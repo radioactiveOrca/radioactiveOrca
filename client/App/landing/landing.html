@@ -1,5 +1,16 @@
 <div class="landing-cont">
   <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <center><div class="modality center-block form-inline">
+      <input id="driving" class="hide" type="radio" ng-model="modality" value="driving" checked>
+      <label class="btn" for="driving">Driving</label>
+      <input id="walking" class="hide" type="radio" ng-model="modality" value="walking">
+      <label class="btn" for="walking">Walking</label>
+      <input id="biking" class="hide" type="radio" ng-model="modality" value="bicycling">
+      <label class="btn" for="biking">Biking</label>
+      <input id="transit" class="hide" type="radio" ng-model="modality" value="transit">
+      <label class="btn" for="transit">Public Transportation</label>
+    </div></center>
+
     <div class="btn form-control btn-info button" ng-click="findLocation()">Use Current Location</div>
 
     <center><div class="divider">OR</div></center>
@@ -10,7 +21,7 @@
       <!-- disables button if input is not valid -->
       <button class="btn btn-info form-control button" ng-disabled="zipCode.$invalid">Go</button>
     </form>
-    <center><img ng-if="isLoading" src="../../Assets/spiffygif_46x46.gif"><center>
+    <center><img class="spiffy" ng-if="isLoading" src="../../Assets/spiffygif_46x46.gif"><center>
     <div ng-if="error">{{error}}</div>
   </div>
 </div>

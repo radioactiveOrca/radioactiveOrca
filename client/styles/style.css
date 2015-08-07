@@ -9,11 +9,30 @@
   background: rgba(255,255,255,.9);
   position: relative;
   top: 20vh;
-  padding: 10%;
+  padding: 75px;
   border-radius: 10px;
   color: slateblue;
   font-size: 1.15em;
   box-shadow: inset 0 0 10px 3px #333;
+}
+
+.landing .btn {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.modality .btn {
+  background: #aad;
+  color:white;
+  margin-bottom: 20px;
+}
+
+.modality input[type="radio"]:checked + label {
+  background: #97a;
+}
+
+.modality .btn:hover {
+  background: #a9b;
 }
 
 .divider {
@@ -40,4 +59,8 @@
 .movie-container {
   height: 600px;
   margin-bottom: 50px;
+}
+
+.movie-container img {
+  max-height: 72%;
 }

@@ -1,6 +1,6 @@
 var app = angular.module('moviedash.services', []);
 
-app.factory('MovieClient', function($http) {
+app.factory('MovieClient', function($http, selected) {
   var setResults = function(results) {
     sessionStorage.movieInfo = angular.toJson(results);
   };
@@ -8,10 +8,12 @@ app.factory('MovieClient', function($http) {
     var movieInfo = angular.fromJson(sessionStorage.movieInfo);
     return movieInfo;
   };
-  var getTheaters = function(location) {
+  var getTheaters = function(query) {
+    selected.setLocation(query.location);
+    selected.setModality(query.modality);
     return $http({
       method: 'POST',
-      data: {location: location},
+      data: query,
       url: '/api/movies',
       success: function(response) {
          return response;
@@ -30,15 +32,32 @@ app.factory('MovieClient', function($http) {
 
 app.factory('selected', function() {
   var setSelected = function(movie) {
-    console.log(movie)
     sessionStorage.movie = angular.toJson(movie);
   };
   var getSelected = function() {
     var movie = angular.fromJson(sessionStorage.movie);
     return movie;
   };
+  var setLocation = function(location) {
+    sessionStorage.clientLocation = angular.toJson(location);
+  };
+  var getLocation = function() {
+    var loc = angular.fromJson(sessionStorage.clientLocation);
+    return loc;
+  };
+  var setModality = function(modality) {
+    sessionStorage.modality = angular.toJson(modality);
+  };
+  var getModality = function() {
+    var modality = angular.fromJson(sessionStorage.modality);
+    return modality;
+  };
   return {
     setSelected: setSelected,
-    getSelected: getSelected
+    getSelected: getSelected,
+    setLocation: setLocation,
+    getLocation: getLocation,
+    setModality: setModality,
+    getModality: getModality
   };
 });
