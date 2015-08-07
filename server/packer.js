@@ -62,18 +62,32 @@ module.exports = function(movies, callback) {
   var getInfoFromIMDB = function(movie, callback) {
     //TODO: 
     // IMDB API call here
-    console.log("-->>>>>>>>>>", movie)
+    // console.log("-->>>>>>>>>>", movie)
     // var movieObj = "http://www.omdbapi.com/?i=“ + movie.id + "&plot=short&r=json"
-    request.get("http://www.omdbapi.com/?i=" + movie.movieName + "&plot=short&r=json")
-            .on('response', function(response){
-              console.log("IMDB IS WORKING")
-              var film = {};
-              film.title = response.Title;
-              film.poster = response.Poster;
-              film.synposis = response.Plot;
-              console.log(film)
-              callback(film);
-            });
+    request("http://www.omdbapi.com/?i=" + movie.id + "&plot=short&r=json", function(error, response, body){
+      
+      body = JSON.parse(body);
+
+      var film = {};
+      film.title = body.Title;
+      film.poster = body.Poster;
+      film.synposis = body.Plot;
+    
+      callback(film);
+    })
+            // .on('response', function(response){
+            //   console.log("IMDB IS WORKING", response.body)
+              // var film = {};
+              // film.title = response.body.Title;
+              // film.poster = response.body.Poster;
+              // film.synposis = response.Plot;
+              // console.log(film)
+              // callback(film);
+            // });
+    // request({
+    //   url: "http://www.omdbapi.com/?i=" + movie.id + "&plot=short&r=json",
+    //   method: 'GET'
+    // })
     
     //call callback on movie data 
   }
