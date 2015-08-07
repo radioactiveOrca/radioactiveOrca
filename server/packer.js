@@ -52,8 +52,8 @@ module.exports = function(movies, callback) {
   var checkForMovie = function(movie, callback) {
     // callback({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"});
     console.log("Checking movie")
-    callback(movieCtrler.addMovie(movie);
-    // callback(movieCtrler.addMovie({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"}));
+    // callback(movieCtrler.addMovie(movie);
+    callback(movieCtrler.addMovie({ title: "Wayne's World", poster: "http://exampleposter.com/image.jpg", synopsis: "This is the movie synopsis"}));
     //STUB:
     //TODO:
     //Interact with the database here

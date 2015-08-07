@@ -19,7 +19,7 @@ module.exports = {
           // from packer and then store it in the DB
           var pack = {
             title: film.name,
-            urlPoster: film.poster,
+            poster: film.poster,
             synposis: film.synposis
           };
           return createMovie(pack);
