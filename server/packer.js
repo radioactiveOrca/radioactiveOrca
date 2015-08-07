@@ -51,8 +51,8 @@ module.exports = function(movies, callback) {
     results.push(movie);
   };
   var checkForMovie = function(movie, callback) {
-    callback(movieCtrler.addMovie(movie));
-    
+    //callback(movieCtrler.addMovie(movie));
+    movieCtrler.findMovie(movie.id, callback);
     //STUB:
     //TODO:
     //Interact with the database here
@@ -89,12 +89,13 @@ module.exports = function(movies, callback) {
     // })
     
     //call callback on movie data 
-  };
-  var addMovieToDB = function(moviedata) {
+
+  }
+  var addMovieToDB = function(imdbData, movie) {
     //TODO:
     //Handle add to database;
-    return movieCtrler.addMovie(moviedata);
-  };
+    return movieCtrler.addMovie(imdbData, movie);
+  }
   
   movieLookupHelper();
   
