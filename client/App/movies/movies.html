@@ -1,5 +1,5 @@
 <div class="movie-panel container" ng-controller="MoviesCtrl">
-  <div class="movie-container col-sm-4 col-xs-12" ng-repeat="movie in movies">
+  <div class="movie-container col-sm-4 col-xs-12" ng-click="selectMovie($index)" ng-repeat="movie in movies">
     <img class="center-block img-rounded img-responsive" ng-src="{{movie.image}}"/>
     <div class="movie-snippet text-center">
       <h2>{{movie.title}}</h2>
