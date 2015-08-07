@@ -2,7 +2,7 @@ var showtimes = require('showtimes');
 var q = require('q');
 var appendTransitTime= require('./appendTransitTime');
 var filter = require('./movieFilter');
-var packer = require('./packer')
+var packer = require('./packer');
 
 
 // function to enter lng & lat into showtimes parameter
@@ -10,7 +10,7 @@ var packer = require('./packer')
 
 // Need to see if longitude & latitude is one argument?
 exports.getShows = function(req,res) {
-  var loc = req.body.location.toString();
+  var loc = req.body.location;
 
   var s = showtimes(loc, {pageLimit: 1});
   s.getTheaters(function(err, theaters) {
