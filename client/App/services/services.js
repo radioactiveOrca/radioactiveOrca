@@ -27,3 +27,9 @@ app.factory('MovieClient', function($http) {
     getResults: getResults
   };
 });
+
+app.factory('selected', function() {
+  var selected = {};
+  selected.movie = null;
+  return selected;
+});
