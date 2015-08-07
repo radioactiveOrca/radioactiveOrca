@@ -1,7 +1,7 @@
 var app = angular.module('moviedash.landing', []);
 
 app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
-
+  $scope.modality = "driving";
   //Checks if geolocation is available, shows form if not
   $scope.findLocation = function() {
     $scope.error = null;
@@ -18,7 +18,7 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
 
       $scope.location = latitude + ', ' + longitude;
       //sends location to factory
-      MovieClient.getTheaters($scope.location).then(function(response) {
+      MovieClient.getTheaters({location: $scope.location, modality: $scope.modality}).then(function(response) {
         if (!response) {
             $scope.error = "No movies are available at this time. Please try again later.";
             return;
@@ -47,7 +47,7 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
     $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).then(function (response) {
       var lat = response.data.results[0].geometry.location.lat;
       var long = response.data.results[0].geometry.location.lng;
-      MovieClient.getTheaters(lat + ', ' + long).then(function(response) {
+      MovieClient.getTheaters({location: lat + ', ' + long, modality: $scope.modality}).then(function(response) {
           $scope.isLoading = false;
           if (!response.data) {
             $scope.error = "No movies are available at this time. Please try again later.";
