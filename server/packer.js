@@ -13,15 +13,16 @@ module.exports = function(movies, callback) {
       //check the database to see if we already have information for that movie
       checkForMovie(movie, function(found) {
       //if successfully found,
-      console.log("------------>")
+      // console.log("------------>", found)
         if (found) {
+          console.log("THIS IS FOUND")
         //pack that information in with the movies list and continue to next movie
           packInfo(found, index);
           index++;
           movieLookupHelper();
         } else {
         //hit IMDB for the required information
-          getInforFromIMDB(movie, function (data) {
+          getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
               addMovieToDB(data);

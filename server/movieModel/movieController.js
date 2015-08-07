@@ -5,27 +5,39 @@ module.exports = {
 
   // TODO: create add movie function
   addMovie: function(film) {
-    var createMovie = Q.nbind(Movie.create, Movie);
-    var findMovie = Q.nbind(Movie.findOne, Movie);
-
+    // var createMovie = Q.nbind(movie.create, movie);
+    // var findMovie = Q.nbind(movie.findOne, movie);
+    
     // Checks if the movie exists and if it does
     // Sends the movie up to packer
-    findMovie({title: film.name})
-      .then(function(match){
+    movie.findOne({title: film.title})
+      .exec(function(err, match){
+        if (err) {
+          console.log(err)
+        }
+        console.log("0000000000->", match)
         if (match) {
           return match;
         } else {
+          console.log("IM HERE")
           // fetch the movie title, poster, synposis
           // from packer and then store it in the DB
-          var pack = {
-            title: film.name,
+          var newMovie = new movie({
+            title: film.title,
             poster: film.poster,
             synposis: film.synposis
-          };
-          return createMovie(pack);
+          })
+          newMovie.save(function(err, movie) {
+            if (err) {
+              console.log(err);
+
+            }
+            return movie
+          });
+          // return createMovie(pack);
         }
       })
-      .save();
+      
   }
 }
 
