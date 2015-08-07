@@ -18,6 +18,7 @@
     "angular": "~1.4.3",
     "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.5",
-    "angular-mocks": "~1.4.3"
+    "angular-mocks": "~1.4.3",
+    "ngmap": "~1.10.0"
   }
 }

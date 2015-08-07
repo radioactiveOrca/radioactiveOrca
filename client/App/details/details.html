@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="route-info row">
-    <img src="../../assets/map.png" class="col-sm-8 col-xs-12"/>
+    <!-- <img src="../../assets/map.png" class="col-sm-8 col-xs-12"/> -->
     <div class="info-list col-sm-4 col-xs-12 text-center">
       <p>{{movie.theaterName}}</p>
       <p>{{movie.theaterAddress}}</p>
@@ -19,3 +19,13 @@
     </div>
   </div>
 </div>
+<map center="{{origin}}" zoom="8">
+  <directions
+    draggable="true"
+    panel="directions-panel"
+    travel-mode="{{travelMode}}"
+    origin="{{origin}}"
+    destination="{{destination}}">
+  </directions>
+</map>
+<div id="directions-panel"></div>
