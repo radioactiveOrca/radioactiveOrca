@@ -1,11 +1,11 @@
 var app = angular.module('moviedash.services', []);
 
 app.factory('MovieClient', function($http) {
-  var movieInfo;
   var setResults = function(results) {
-    movieInfo = results;
+    sessionStorage.movieInfo = angular.toJson(results);
   };
   var getResults = function() {
+    var movieInfo = angular.fromJson(sessionStorage.movieInfo);
     return movieInfo;
   };
   var getTheaters = function(location) {
@@ -29,7 +29,16 @@ app.factory('MovieClient', function($http) {
 });
 
 app.factory('selected', function() {
-  var selected = {};
-  selected.movie = null;
-  return selected;
+  var setSelected = function(movie) {
+    console.log(movie)
+    sessionStorage.movie = angular.toJson(movie);
+  };
+  var getSelected = function() {
+    var movie = angular.fromJson(sessionStorage.movie);
+    return movie;
+  };
+  return {
+    setSelected: setSelected,
+    getSelected: getSelected
+  };
 });

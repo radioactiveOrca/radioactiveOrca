@@ -4,6 +4,6 @@ angular.module('moviedash.details', [])
   // Code
   //STUB: Replace with dynamic code
 
-  $scope.selected = selected;
+  $scope.movie = selected.getSelected();
 });
 

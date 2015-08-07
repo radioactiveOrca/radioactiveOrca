@@ -15,7 +15,6 @@ module.exports = function(movies, callback) {
       checkForMovie(movie, function(found) {
       //if successfully found,
         if (found) {
-          console.log("I AM FOUND")
         //pack that information in with the movies list and continue to next movie
           packInfo(found, index);
           index++;
@@ -26,7 +25,7 @@ module.exports = function(movies, callback) {
           getInfoFromIMDB(movie, function (data) {
             if (data) {
               //Add this data to the database
-              addMovieToDB(data);
+              addMovieToDB(data, movie);
               //Pack that information in with the movies list and continue to next movie
               packInfo(data, index);
               index++;
@@ -41,7 +40,7 @@ module.exports = function(movies, callback) {
         }
       });
     }
-  }
+  };
   
   
   
@@ -50,7 +49,7 @@ module.exports = function(movies, callback) {
     movie.poster = movieData.poster;
     movie.synopsis = movieData.synopsis;
     results.push(movie);
-  }
+  };
   var checkForMovie = function(movie, callback) {
     callback(movieCtrler.addMovie(movie));
     
@@ -58,7 +57,7 @@ module.exports = function(movies, callback) {
     //TODO:
     //Interact with the database here
     //Call callback on movie data if it exists, or null if it doesn't
-  }
+  };
   var getInfoFromIMDB = function(movie, callback) {
     //TODO: 
     // IMDB API call here
@@ -71,10 +70,10 @@ module.exports = function(movies, callback) {
       var film = {};
       film.title = body.Title;
       film.poster = body.Poster;
-      film.synposis = body.Plot;
+      film.synopsis = body.Plot;
     
       callback(film);
-    })
+    });
             // .on('response', function(response){
             //   console.log("IMDB IS WORKING", response.body)
               // var film = {};
@@ -90,14 +89,14 @@ module.exports = function(movies, callback) {
     // })
     
     //call callback on movie data 
-  }
+  };
   var addMovieToDB = function(moviedata) {
     //TODO:
     //Handle add to database;
     return movieCtrler.addMovie(moviedata);
-  }
+  };
   
   movieLookupHelper();
   
-}
+};
      
