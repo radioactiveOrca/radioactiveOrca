@@ -62,6 +62,9 @@ module.exports = function(movies, callback) {
   var getInfoFromIMDB = function(movie, callback) {
     //TODO: 
     // IMDB API call here
+    // var movieObj = "http://www.omdbapi.com/?t=“ + movie.title + "&y=&plot=short&r=json";
+
+    
     //call callback on movie data 
   }
   var addMovieToDB = function(moviedata) {
