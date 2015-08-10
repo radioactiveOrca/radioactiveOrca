@@ -21,20 +21,9 @@
   font-size: 16px;
 }
 
-.modality .btn {
-  background: #aad;
-  color:white;
+select {
   margin-bottom: 20px;
 }
-
-.modality input[type="radio"]:checked + label {
-  background: #97a;
-}
-
-.modality .btn:hover {
-  background: #a9b;
-}
-
 .divider {
   margin: 20px;
 }

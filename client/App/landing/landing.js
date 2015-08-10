@@ -2,6 +2,8 @@ var app = angular.module('moviedash.landing', []);
 
 app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
   $scope.modality = "driving";
+  $scope.leavingTime = "0";
+  
   //Checks if geolocation is available, shows form if not
   $scope.findLocation = function() {
     $scope.error = null;
@@ -15,19 +17,7 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
       //if location is found, sets lat and long
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
-
-      $scope.location = latitude + ', ' + longitude;
-      //sends location to factory
-      MovieClient.getTheaters({location: $scope.location, modality: $scope.modality}).then(function(response) {
-        if (!response) {
-            $scope.error = "No movies are available at this time. Please try again later.";
-            return;
-          } else {
-            MovieClient.setResults(response);
-            $location.path('/movies');            
-          }
-        //redirects to movie route
-      });
+      sendQuery(latitude, longitude);
     }
 
     function error() {
@@ -47,16 +37,27 @@ app.controller('LandingCtrl', function($scope, $location, MovieClient, $http) {
     $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).then(function (response) {
       var lat = response.data.results[0].geometry.location.lat;
       var long = response.data.results[0].geometry.location.lng;
-      MovieClient.getTheaters({location: lat + ', ' + long, modality: $scope.modality}).then(function(response) {
-          $scope.isLoading = false;
-          if (!response.data) {
-            $scope.error = "No movies are available at this time. Please try again later.";
-            return;
-          } else {
-            MovieClient.setResults(response);
-            $location.path('/movies');              
-          }
-      });
+      sendQuery(lat, long);
     });
+  };
+
+  var sendQuery = function(lat, long) {
+    $scope.location = lat + ', ' + long;
+    $scope.query = {location: $scope.location, modality : $scope.modality, leavingTime: $scope.leavingTime};
+    MovieClient.getTheaters($scope.query).then(function(response) {
+      handleResults(response);
+    });
+  };
+
+
+  var handleResults = function(response) {
+    $scope.isLoading = false;
+    if (!response.data) {
+      $scope.error = "No movies are available at this time. Please try again later.";
+      return;
+    } else {
+      MovieClient.setResults(response);
+      $location.path('/movies');          
+    }
   };
 });

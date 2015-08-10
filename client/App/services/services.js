@@ -2,15 +2,15 @@ var app = angular.module('moviedash.services', []);
 
 app.factory('MovieClient', function($http, selected) {
   var setResults = function(results) {
-    sessionStorage.movieInfo = angular.toJson(results);
+    selected.setStorage('movieInfo', results);
   };
   var getResults = function() {
-    var movieInfo = angular.fromJson(sessionStorage.movieInfo);
-    return movieInfo;
+    return selected.getStorage('movieInfo');
   };
   var getTheaters = function(query) {
-    selected.setLocation(query.location);
-    selected.setModality(query.modality);
+    selected.setStorage('location', query.location);
+    selected.setStorage('modality', query.modality);
+    selected.setStorage('leavingTime', query.leavingTime);
     return $http({
       method: 'POST',
       data: query,
@@ -31,34 +31,16 @@ app.factory('MovieClient', function($http, selected) {
 });
 
 app.factory('selected', function() {
-  var setSelected = function(movie) {
-    sessionStorage.movie = angular.toJson(movie);
+
+  var setStorage = function(key, value) {
+    sessionStorage[key] = angular.toJson(value);
   };
-  var getSelected = function() {
-    var movie = angular.fromJson(sessionStorage.movie);
-    return movie;
-  };
-  var setLocation = function(location) {
-    sessionStorage.clientLocation = angular.toJson(location);
-  };
-  var getLocation = function() {
-    var loc = angular.fromJson(sessionStorage.clientLocation);
-    return loc;
-  };
-  var setModality = function(modality) {
-    sessionStorage.modality = angular.toJson(modality);
-  };
-  var getModality = function() {
-    var modality = angular.fromJson(sessionStorage.modality);
-    return modality;
+  var getStorage = function(key) {
+    return angular.fromJson(sessionStorage[key]);
   };
   return {
-    setSelected: setSelected,
-    getSelected: getSelected,
-    setLocation: setLocation,
-    getLocation: getLocation,
-    setModality: setModality,
-    getModality: getModality
+    setStorage: setStorage,
+    getStorage: getStorage
   };
 });
 
