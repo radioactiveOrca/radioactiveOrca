@@ -10,24 +10,20 @@ var DistanceMatrix = function() {
 
 
 var format = function(params) {
-  /* params looks like
-    {
-      // required
-        // origins (we're only expecting one)
-        // destinations (could be multiple)
-      // optional
-        // mode (default, walking, bicycling, transit)
-        // transit_mode (for if mode is transit)
-        // departure_time
-      origin: ..., (string that is zip or lat,long)
-      destinations: [...]
-    }
+  /*query reference:
+    https://developers.google.com/maps/documentation/distancematrix/intro
   */
 
   var query = {};
   query.key = secret;
   query.origins = params.origins.replace(/[\s]/g, ''); // get rid of spaces
   query.destinations = params.destinations.join('|');
+  query.mode = params.mode.toLowerCase();
+  query.departure_time = (query.mode === 'transit') ?
+                          // convert departure time to seconds since January 1, 1970 UTC
+                         ((new Date()).getTime() + params.departure_time) * 1000 :
+                          // departure_time is 'now' if travel mode is not transit
+                         query.departure_time = 'now';
   return qs.stringify(query);
 };
 

@@ -18,14 +18,18 @@ exports.getShows = function(req,res) {
       res.send(null);
       return;
     }
-    // Should return an array of theaters
-    appendTransitTime(loc, theaters, function(results) {
+    // send req.body (has loc and modality info) to distance matrix
+    appendTransitTime(req.body, theaters, function(results) {
       console.log(results);
+
+      // filter out distant results
       var filteredResults = filter(results);
       if (filteredResults.length === 0) {
         res.send(null);
         return;
       }
+
+      // pack info to send back to client
       packer(filteredResults, function(movies) {
         res.status(200).send(movies);
       });
