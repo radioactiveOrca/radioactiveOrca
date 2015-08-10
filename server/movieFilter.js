@@ -36,13 +36,13 @@ module.exports = function(theaters) {
     maxTargetTime = targetTime + 2100000;
     theater.movies.forEach(function(movie) {
       movie.showtimes.forEach(function(showtime) {
-        var showTime = convertShowTime(showtime);
+      var convertedShowTime = convertShowTime(showtime);
 
-        if (minTargetTime <= showTime && showTime <= maxTargetTime) {
+        if (minTargetTime <= convertedShowTime && convertedShowTime <= maxTargetTime) {
           //extract imdb id from url
           var imdbArr = movie.imdb.split('/');
           var imdb = imdbArr[imdbArr.length - 2];
-          results.push({id: imdb, showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name, imdbLink: movie.imdb, trailerLink: movie.trailer, theaterAddress: theater.address, rating: movie.rating});
+          results.push({id: imdb, dateObjectShowTime: convertedShowTime, showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name, imdbLink: movie.imdb, trailerLink: movie.trailer, theaterAddress: theater.address, rating: movie.rating});
         }
       });
     });
