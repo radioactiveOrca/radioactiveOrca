@@ -1,0 +1,12 @@
+<div class="modal-header" ng-controller="MoviesCtrl">
+        <center><h3 class="modal-title">{{ title }}</h3></center>
+    </div>
+    <div class="modal-body">
+        <center><iframe id="player" type="text/html" width="640" height="390"
+          ng-src="{{ trailerUrl }}"
+          frameborder="0">
+        </iframe></center>
+    </div>
+    <div class="modal-footer">
+    <center><button class="btn btn-primary" type="button" ng-click="closeTrailer()">Close</button></center>
+</div>

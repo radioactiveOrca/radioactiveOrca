@@ -5,7 +5,13 @@ app.factory('MovieClient', function($http, selected) {
     selected.setStorage('movieInfo', results);
   };
   var getResults = function() {
+
     return selected.getStorage('movieInfo');
+
+    var movieInfo = angular.fromJson(sessionStorage.movieInfo);
+    console.log(movieInfo)
+    return movieInfo;
+
   };
   var getTheaters = function(query) {
     selected.setStorage('location', query.location);

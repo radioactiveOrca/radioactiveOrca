@@ -1,13 +1,17 @@
 <center><h1>Watch Now!!!</h1></center>
 <div class="movie-panel container" ng-controller="MoviesCtrl">
-  <div class="movie-container col-sm-4 col-xs-12" ng-click="selectMovie($index)" ng-repeat="movie in movies">
-    <img ng-if="movie.poster !== 'N/A'" class="center-block img-rounded img-responsive" ng-src="{{movie.poster}}"/>
-    <img class="center-block img-rounded img-responsive" ng-if="movie.poster === 'N/A'" ng-src="../../Assets/default-poster.png">
+  <div class="movie-container col-sm-4 col-xs-12" ng-repeat="movie in movies">
+    <img ng-if="movie.poster !== 'N/A'"  ng-click="selectMovie($index)"  class="center-block img-rounded img-responsive" ng-src="{{movie.poster}}"/>
+    <img class="center-block img-rounded img-responsive"  ng-click="selectMovie($index)"  ng-if="movie.poster === 'N/A'" ng-src="../../Assets/default-poster.png">
     <div class="movie-snippet text-center">
       <h2>{{movie.movieName}}</h2>
       <p class="text-muted">{{movie.theaterName}}</p>
       <p>{{movie.transitTime}}</p>
+
       <h4>{{movie.dateObjectShowTime | timeFromNow}}</h4>
+
+      <h4>{{movie.showTime}}</h4>
+      <label class="btn btn-primary" ng-click="showTrailer($index)">Show Trailer</label>
     </div>
   </div>
 </div>
