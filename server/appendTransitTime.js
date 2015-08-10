@@ -5,12 +5,12 @@ var appendTransitTimes = function(query, theaters, callback) {
     return theater.address;
   });
 
-  console.log(query);
   // create params with our options
   var params = {
     origins: query.location,
     destinations: destinations,
-    mode: query.modality
+    mode: query.modality,
+    departure_time: query.leavingTime // sent as milliseconds
   };
   // query with params
   googleapi.query(params, function(googleResults) {
