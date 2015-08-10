@@ -4,6 +4,7 @@ angular.module('moviedash.movies', ['ui.bootstrap'])
   // Code
   //STUB: Replace with dynamic data
 
+
   $scope.selectMovie = function(index) {
     selected.setStorage('movie', $scope.movies[index]);
     $location.path('/details');
@@ -14,6 +15,14 @@ angular.module('moviedash.movies', ['ui.bootstrap'])
   //   $location.path('/details');
   // };
 
+  $scope.selectMovie = function(index) {
+    selected.setSelected($scope.movies[index]);
+    $location.path('/details');
+  };
+
+  $scope.title = "TEST";
+
+
 
   $scope.movies = MovieClient.getResults().data;
 
@@ -23,7 +32,7 @@ angular.module('moviedash.movies', ['ui.bootstrap'])
     var embededUrl = 'http://www.youtube.com/embed/' + videoId + '?autoplay=1';
     
     $scope.title = $scope.movies[index].movieName;
-
+    console.log($scope.title)
     //$scope.movies[index].trailerLink
     // Need to update the template using this link and change the link to embeded
     $modal.open({
