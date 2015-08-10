@@ -28,6 +28,7 @@ var format = function(params) {
   query.key = secret;
   query.origins = params.origins.replace(/[\s]/g, ''); // get rid of spaces
   query.destinations = params.destinations.join('|');
+  query.mode = params.mode.toLowerCase();
   return qs.stringify(query);
 };
 
