@@ -1,4 +1,26 @@
 describe('LandingCtrl', function() {
+  describe('test', function() {
+    it('should be true', function() {
+      expect(true).toBe(true);
+    })
+  })
+  describe('Scope properties', function() {
+    it('should have a findLocation method', function() {
+      module('moviedash');
+      var $rootScope, $scope, $controller;
+      inject(function($injector) {
+        //Gets the root scope from the injector
+        $rootScope = $injector.get('$rootScope');
+        //Creates a new scope
+        $scope = $rootScope.$new();
+        //Gets the $controller object
+        $controller = $injector.get('$controller');
+        //This populates the $scope with a new Landing Controller
+        //$controller('LandingCtrl', {$scope: $scope});
+      });
+      expect($scope).toBeDefined; 
+    });
+  });
   /*
   beforeEach(module('moviedash'));
   beforeEach(module('moviedash.landing'));
