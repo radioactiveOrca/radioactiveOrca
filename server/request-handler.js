@@ -21,7 +21,8 @@ exports.getShows = function(req,res) {
     // Should return an array of theaters
     appendTransitTime(loc, theaters, function(results) {
       console.log(results);
-      var filteredResults = filter(results);
+      //filter movies for correct times
+      var filteredResults = filter(results, req.body.leavingTime);
       if (filteredResults.length === 0) {
         res.send(null);
         return;
