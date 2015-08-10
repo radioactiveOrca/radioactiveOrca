@@ -38,15 +38,9 @@ module.exports = function(theaters, leavingTime) {
     maxTargetTime = targetTime + 2100000;
     theater.movies.forEach(function(movie) {
       movie.showtimes.forEach(function(showtime) {
-<<<<<<< HEAD
       var convertedShowTime = convertShowTime(showtime);
 
         if (minTargetTime <= convertedShowTime && convertedShowTime <= maxTargetTime) {
-=======
-        var showTime = convertShowTime(showtime);
-        //filter for movies within 5 to 35 minutes of target time
-        if (minTargetTime <= showTime && showTime <= maxTargetTime) {
->>>>>>> Add ability to choose leaving time and apply leaving time to filter
           //extract imdb id from url
           var imdbArr = movie.imdb.split('/');
           var imdb = imdbArr[imdbArr.length - 2];
