@@ -1,15 +1,25 @@
 <div class="landing-cont">
   <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-    <center><div class="modality center-block form-inline">
-      <input id="driving" class="hide" type="radio" ng-model="modality" value="driving" checked>
-      <label class="btn" for="driving">Driving</label>
-      <input id="walking" class="hide" type="radio" ng-model="modality" value="walking">
-      <label class="btn" for="walking">Walking</label>
-      <input id="biking" class="hide" type="radio" ng-model="modality" value="bicycling">
-      <label class="btn" for="biking">Biking</label>
-      <input id="transit" class="hide" type="radio" ng-model="modality" value="transit">
-      <label class="btn" for="transit">Public Transportation</label>
-    </div></center>
+
+    <div class="modality col-xs-6">
+      <label>Transportation Mode</label>
+      <select class="form-control" ng-model="modality">
+        <option value="driving">Driving</option>
+        <option value="walking">Walking</option>
+        <option value="biking">Biking</option>
+        <option value="transit">Public Transportation</option>
+      </select>
+    </div>
+
+    <div class="leaving col-xs-6">
+      <label>Departure Time</label>
+      <select class="form-control" ng-model="leavingTime">
+        <option value="0">Now</option>
+        <option value="1800000">30 minutes</option>
+        <option value="3600000">1 hour</option>
+        <option value="7200000">2 hours</option>
+      </select>
+    </div>
 
     <div class="btn form-control btn-info button" ng-click="findLocation()">Use Current Location</div>
 
