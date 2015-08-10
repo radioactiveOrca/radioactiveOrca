@@ -51,7 +51,7 @@ app.filter('timeFromNow', function() {
   return function(input) {
     var delta = Math.round((input - new Date()) / 1000);
     var minutes = Math.round(delta / 60);
-    return minutes.toString() + " minutes from now"
+    return minutes.toString() + " minutes from now";
   };
 });
 

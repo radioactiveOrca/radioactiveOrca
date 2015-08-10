@@ -39,6 +39,7 @@ module.exports = function(theaters, leavingTime) {
     maxTargetTime = targetTime + 2100000;
     theater.movies.forEach(function(movie) {
       movie.showtimes.forEach(function(showtime) {
+
       var convertedShowTime = convertShowTime(showtime);
 
         if (minTargetTime <= convertedShowTime && convertedShowTime <= maxTargetTime) {
