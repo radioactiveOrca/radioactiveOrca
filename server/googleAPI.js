@@ -21,9 +21,10 @@ var format = function(params) {
   query.mode = params.mode.toLowerCase();
   query.departure_time = (query.mode === 'transit') ?
                           // convert departure time to seconds since January 1, 1970 UTC
-                         ((new Date()).getTime() + params.departure_time) * 1000 :
+                         Math.round(((new Date()).getTime() + params.departure_time) / 1000) :
                           // departure_time is 'now' if travel mode is not transit
                          query.departure_time = 'now';
+
   return qs.stringify(query);
 };
 
