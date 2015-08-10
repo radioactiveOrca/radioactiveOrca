@@ -61,3 +61,16 @@ app.factory('selected', function() {
     getModality: getModality
   };
 });
+
+//This filter is meant to be used on a javascript Date object. It
+//replaces the date object with a string describing that time in relative
+//terms like "5 minutes from now"
+app.filter('timeFromNow', function() {
+  return function(input) {
+    var delta = Math.round((input - new Date()) / 1000);
+    var minutes = Math.round(delta / 60);
+    return minutes.toString() + " minutes from now"
+  };
+});
+
+

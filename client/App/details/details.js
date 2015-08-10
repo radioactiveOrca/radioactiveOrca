@@ -5,7 +5,6 @@ angular.module('moviedash.details', [])
 
   $scope.movie = selected.getSelected();
 
-
   // Navigation info
   $scope.origin = selected.getLocation();
   $scope.destination = $scope.movie.theaterAddress;
