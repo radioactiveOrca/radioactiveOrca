@@ -31,6 +31,7 @@ var convertShowTime = function(showtime) {
 module.exports = function(theaters, leavingTime) {
   var results = [];
   theaters.forEach(function(theater) {
+    leavingTime = parseInt(leavingTime);
     var targetTime = calculateTarget(theater.transitTimeSeconds, leavingTime);
     //mintime is target plus 5 minutes
     minTargetTime = targetTime + 300000;
