@@ -4,7 +4,8 @@ angular.module('moviedash', [
   'moviedash.details',
   'moviedash.services',
   'ui.router',
-  'ngMap'
+  'ngMap',
+  'ui.bootstrap'
   // 'ngMock'
 
 ])

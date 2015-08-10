@@ -1,6 +1,6 @@
-angular.module('moviedash.movies', ['ui.bootstrap'])
+angular.module('moviedash.movies', [])
 
-.controller('MoviesCtrl', function ($scope, $location, MovieClient, selected, $modal) {
+.controller('MoviesCtrl', function ($scope, $location, MovieClient, selected, $modal, $sce) {
   // Code
   //STUB: Replace with dynamic data
 
@@ -10,20 +10,6 @@ angular.module('moviedash.movies', ['ui.bootstrap'])
     $location.path('/details');
   };
 
-  // $scope.selectMovie = function(index) {
-  //   selected.setSelected($scope.movies[index]);
-  //   $location.path('/details');
-  // };
-
-  $scope.selectMovie = function(index) {
-    selected.setSelected($scope.movies[index]);
-    $location.path('/details');
-  };
-
-  $scope.title = "TEST";
-
-
-
   $scope.movies = MovieClient.getResults().data;
 
   $scope.showTrailer = function(index) {
@@ -32,18 +18,18 @@ angular.module('moviedash.movies', ['ui.bootstrap'])
     var embededUrl = 'http://www.youtube.com/embed/' + videoId + '?autoplay=1';
     
     $scope.title = $scope.movies[index].movieName;
-    console.log($scope.title)
-    //$scope.movies[index].trailerLink
-    // Need to update the template using this link and change the link to embeded
-    $modal.open({
+    $scope.trailerUrl = $sce.trustAsResourceUrl(embededUrl);
+    
+    $scope.$modalInstance = $modal.open({
       templateUrl: "../App/movies/videoplayer.html",
       controller: 'MoviesCtrl',
-      size: "lg"
+      size: "lg",
+      scope: $scope
     })
   }
 
   $scope.closeTrailer = function() {
-    $modal.close();
+    $scope.$modalInstance.close('');
   }
   
 });

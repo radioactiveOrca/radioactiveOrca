@@ -5,13 +5,13 @@ app.factory('MovieClient', function($http, selected) {
     selected.setStorage('movieInfo', results);
   };
   var getResults = function() {
-<<<<<<< HEAD
+
     return selected.getStorage('movieInfo');
-=======
+
     var movieInfo = angular.fromJson(sessionStorage.movieInfo);
     console.log(movieInfo)
     return movieInfo;
->>>>>>> Added videoplay template, show trailer btn, implemented partial functionality for trailers
+
   };
   var getTheaters = function(query) {
     selected.setStorage('location', query.location);
