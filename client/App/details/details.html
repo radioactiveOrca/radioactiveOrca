@@ -1,15 +1,11 @@
 <div class="details-panel container">
   <div class="movie-info center-block row">
-    <img class="img-rounded col-sm-offset-1 col-sm-4 col-xs-6" ng-src="{{movie.poster}}"/>
-    <div class="col-sm-6 col-xs-6">
+    <img class="img-rounded col-sm-offset-2 col-sm-2 col-xs-offset-1 col-xs-4" ng-src="{{movie.poster}}"/>
+    <div class="col-sm-6 col-sm-offset-2 col-xs-6">
       <h1>{{movie.movieName}}</h1>
       <p class="lead">{{movie.synopsis}}</p>
       <p ng-if="!movie.synopsis" class="text-muted" > No synopsis available </p>
       <p>Rated: {{movie.rating}}</p>
-    </div>
-  </div>
-  <div class="route-info row">
-    <div class="info-list col-sm-4 col-xs-12 text-center">
       <p>{{movie.theaterName}}</p>
       <p>{{movie.theaterAddress}}</p>
       <p class="text-muted">Travel Time: {{movie.transitTime}}</p>
@@ -17,7 +13,7 @@
     </div>
   </div>
 </div>
-<map center="{{origin}}" zoom="8">
+<div class="col-sm-offset-1 col-sm-5"><map center="{{origin}}" zoom="8">
   <directions
     draggable="true"
     panel="directions-panel"
@@ -26,5 +22,5 @@
     origin="{{origin}}"
     destination="{{destination}}">
   </directions>
-</map>
-<div id="directions-panel"></div>
+</map></div>
+<div class="col-sm-5" id="directions-panel"></div>
