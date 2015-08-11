@@ -13,19 +13,23 @@ angular.module('moviedash.movies', [])
   $scope.movies = MovieClient.getResults().data;
 
   $scope.showTrailer = function(index) {
+
     var link = $scope.movies[index].trailerLink;
-    var videoId = link.slice(link.indexOf('=') + 1);
-    var embededUrl = 'http://www.youtube.com/embed/' + videoId + '?autoplay=1';
-    
-    $scope.title = $scope.movies[index].movieName;
-    $scope.trailerUrl = $sce.trustAsResourceUrl(embededUrl);
-    
-    $scope.$modalInstance = $modal.open({
-      templateUrl: "../App/movies/videoplayer.html",
-      controller: 'MoviesCtrl',
-      size: "lg",
-      scope: $scope
-    })
+
+    if (link !== false) {
+      var videoId = link.slice(link.indexOf('=') + 1);
+      var embededUrl = 'http://www.youtube.com/embed/' + videoId + '?autoplay=1';
+      
+      $scope.title = $scope.movies[index].movieName;
+      $scope.trailerUrl = $sce.trustAsResourceUrl(embededUrl);
+      
+      $scope.$modalInstance = $modal.open({
+        templateUrl: "../App/movies/videoplayer.html",
+        controller: 'MoviesCtrl',
+        size: "lg",
+        scope: $scope
+      })
+    }
   }
 
   $scope.closeTrailer = function() {
