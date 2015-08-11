@@ -11,7 +11,7 @@
       <h4>{{movie.dateObjectShowTime | timeFromNow}}</h4>
 
       <h4>{{movie.showTime}}</h4>
-      <label class="btn btn-primary" ng-click="showTrailer($index)">Show Trailer</label>
+      <label class="btn btn-primary" ng-disabled="{{ movie.trailerLink === false }}" ng-click="showTrailer($index)">Show Trailer</label>
     </div>
   </div>
 </div>
