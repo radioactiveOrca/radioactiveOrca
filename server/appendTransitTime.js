@@ -1,4 +1,4 @@
-var googleapi = require('./googleapi');
+var googleapi = require('./googleAPI');
 
 var appendTransitTimes = function(query, theaters, callback) {
   var destinations = theaters.map(function(theater) {

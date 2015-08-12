@@ -20,7 +20,6 @@ exports.getShows = function(req,res) {
     }
     // send req.body (has loc and modality info) to distance matrix
     appendTransitTime(req.body, theaters, function(results) {
-      console.log(results);
       //filter movies for correct times
       var filteredResults = filter(results, req.body.leavingTime);
       if (filteredResults.length === 0) {

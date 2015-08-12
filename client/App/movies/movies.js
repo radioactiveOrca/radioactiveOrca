@@ -6,22 +6,23 @@ angular.module('moviedash.movies', [])
   //STUB: Replace with dynamic data
 
 
-  $scope.selectMovie = function(index) {
-    selected.setStorage('movie', $scope.movies[index]);
+  $scope.selectMovie = function(movie) {
+    selected.setStorage('movie', movie);
     $location.path('/details');
   };
 
   $scope.movies = MovieClient.getResults().data;
 
-  $scope.showTrailer = function(index) {
-
-    var link = $scope.movies[index].trailerLink;
-
+  $scope.showTrailer = function(movie) {
+    var link = movie.trailerLink;
+  
+    console.log(movie)
     if (link !== false) {
       var videoId = link.slice(link.indexOf('=') + 1);
-      var embededUrl = 'http://www.youtube.com/embed/' + videoId + '?autoplay=1';
+      var embededUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+      
 
-      $scope.title = $scope.movies[index].movieName;
+      $scope.title = movie.movieName;
       $scope.trailerUrl = $sce.trustAsResourceUrl(embededUrl);
 
       $scope.$modalInstance = $modal.open({
