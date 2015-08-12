@@ -65,7 +65,8 @@ module.exports = function(movies, callback) {
     var movieDbKey = process.env.DBKEY || keys.moviedb;
     request("https://api.themoviedb.org/3/find/" + movie.id + "?api_key=" + movieDbKey + '&external_source=imdb_id', function(error, response, body){
       body = JSON.parse(body);
-      if (!body.movie_results) { 
+      console.log(body)
+      if (!body.movie_results[0]) { 
         callback(null);
         return;
       }
