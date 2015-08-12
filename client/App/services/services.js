@@ -50,6 +50,9 @@ app.factory('selected', function() {
 app.filter('timeFromNow', function() {
   return function(input) {
     var delta = Math.round((input - new Date()) / 1000);
+    if (delta < 0) {
+      return "Expired"
+    }
     var minutes = Math.round(delta / 60);
     return minutes.toString() + " minutes from now";
   };
