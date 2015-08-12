@@ -36,7 +36,17 @@ angular.module('moviedash.movies', [])
 
   $scope.closeTrailer = function() {
     $scope.$modalInstance.close('');
+
   };
 
+  $scope.getLeaveTime = function() {
+    var leaveTime = new Date(selected.getStorage('leavingTime'));
+    var hours = leaveTime.getHours() % 12 || 12;
+    var minutes = leaveTime.getMinutes(); 
+    if (minutes < 10) {
+      minutes = "0" + minutes.toString();
+    }
+    return hours.toString() + ":" + minutes;
+  }  
 }]);
 
