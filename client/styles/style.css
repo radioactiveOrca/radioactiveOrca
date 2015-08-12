@@ -107,7 +107,7 @@ select {
 }
 
 .movie-container {
-  height: 600px;
+  height: 550px;
   margin-bottom: 50px;
   position: relative;
 }
@@ -117,9 +117,13 @@ select {
 }
 
 .btn-trailer {
+  width: 200px;
   position: absolute;
   bottom: 0;
-  left: 135px;
+  left: 0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (max-width: 768px) {

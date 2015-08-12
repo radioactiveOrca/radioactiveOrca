@@ -10,11 +10,11 @@
     <div class="movie-snippet text-center">
       <h2>{{movie.movieName}}</h2>
       <p class="text-muted">{{movie.theaterName}}</p>
-      <p>{{movie.transitTime}}</p>
+      <p><strong>Travel Time:</strong> {{movie.transitTime}}</p>
 
-      <h4>{{movie.dateObjectShowTime | timeFromNow}}</h4>
+      <h4><strong>Showtime:</strong> {{movie.showTime}} <small class="text-muted">({{movie.dateObjectShowTime | timeFromNow}})</small></h4>
 
-      <h4>{{movie.showTime}}</h4>
+      <h4></h4>
       <label class="btn-trailer btn btn-primary" ng-disabled="{{ movie.trailerLink === false }}" ng-click="showTrailer(movie)">Show Trailer</label>
     </div>
   </div>
