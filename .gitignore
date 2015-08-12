@@ -2,3 +2,4 @@ client/bower_components
 node_modules/
 googleKey.js
 .DS_Store
+client/build
