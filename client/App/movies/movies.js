@@ -6,8 +6,8 @@ angular.module('moviedash.movies', [])
   //STUB: Replace with dynamic data
 
 
-  $scope.selectMovie = function(index) {
-    selected.setStorage('movie', $scope.movies[index]);
+  $scope.selectMovie = function(movie) {
+    selected.setStorage('movie', movie);
     $location.path('/details');
   };
 
