@@ -1,12 +1,3 @@
-
-
-//calculates current time plus transit plus desired leaving time
-var calculateTarget = function(transit, leavingTime) {
-  var currentTime = new Date().getTime();
-  //convert transit time to milliseconds
-  return currentTime + (transit * 1000) + leavingTime;
-};
-
 //changes showtime into date object
 var convertShowTime = function(showtime) {
   var today = new Date();
@@ -31,8 +22,8 @@ var convertShowTime = function(showtime) {
 module.exports = function(theaters, leavingTime) {
   var results = [];
   theaters.forEach(function(theater) {
-    leavingTime = parseInt(leavingTime);
-    var targetTime = calculateTarget(theater.transitTimeSeconds, leavingTime);
+    //adds transit time to leaving time 
+    var targetTime = (theater.transitTimeSeconds * 1000) + leavingTime;
     //mintime is target plus 5 minutes
     minTargetTime = targetTime + 300000;
     //maxtime is target plus 35 minutes
