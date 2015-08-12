@@ -15,12 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../client/bower_components/angular/angular.min.js',
+      '../client/bower_components/angular/angular.js',
       '../client/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       '../client/bower_components/angular-mocks/angular-mocks.js',
-      '../client/App/*.js',
-      '../client/App/services/*.js',
-      '../client/App/landing/*.js',
+      '../client/bower_components/ngmap/build/scripts/ng-map.js',
+      '../client/bower_components/angular-bootstrap/ui-bootstrap.js',
+      '../client/App/app.js',
+      '../client/App/landing/landing.js',
+      '../client/App/services/services.js',
+      '../client/App/movies/movies.js',
+      '../client/App/details/details.js',
       '*.js'
     ],
 
@@ -40,7 +44,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['nyan'],
 
 
     // web server port
