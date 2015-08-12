@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
+        './*.js',
         './client/App/**/*.js',
         './server/**/*.js'
       ]
@@ -20,7 +21,7 @@ module.exports = function(grunt) {
     uglify: {
       targets: {
         files: {
-          // dest : [src files]
+          // syntax: dest : [src files]
           './client/build/scripts/moviedash.min.js' : ['./client/build/scripts/moviedash.js']
         }
       }
@@ -44,10 +45,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-karma');
 
+  ////////////////
   // Declare Tasks
+  ////////////////
+
   grunt.registerTask('test', ['jshint']);
 
-  grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('build', [
+    'test',
+    'concat',
+    'uglify'
+    ]);
 
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('deploy', [
+    'build'
+    ]);
+
+  grunt.registerTask('default', ['test', 'build']);
 };
