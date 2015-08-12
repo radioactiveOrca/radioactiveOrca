@@ -1,6 +1,9 @@
 var qs = require('querystring');
 var request = require('request');
-var secret = require('./googleKey');
+
+if(!process.env.PORT) {
+  var secret = require('./googleKey');
+}
 
 var DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
 
@@ -15,7 +18,7 @@ var format = function(params) {
   */
 
   var query = {};
-  query.key = secret;
+  query.key = process.env.GOOGLEKEY || secret.google;
   query.origins = params.origins.replace(/[\s]/g, ''); // get rid of spaces
   query.destinations = params.destinations.join('|');
   query.mode = params.mode.toLowerCase();

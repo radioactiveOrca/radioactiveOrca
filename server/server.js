@@ -12,7 +12,8 @@ var port = process.env.PORT || 8080;
 var app = express();
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/movies');
+var mongooseConnection = process.env.MONGOLAB_URI || 'mongodb://localhost/movies';
+mongoose.connect(mongooseConnection);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -24,7 +25,6 @@ db.once('open', function (callback) {
 app.use(express.static('client'));
 
 app.get('/', function(req, res) {
-  //requestHandler.getShows(94134);
   res.send("SITE IS UP");
 });
 
