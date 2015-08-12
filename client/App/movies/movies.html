@@ -1,5 +1,8 @@
-<center><h1>Watch Now!!!</h1></center>
 <div class="movie-panel container" ng-controller="MoviesCtrl">
+  <center>
+    <h1>Watch This:</h1>
+    <h3>Leaving at {{getLeaveTime()}}</h3>
+  </center>
   <div class="movie-container col-sm-4 col-xs-12" ng-repeat="movie in movies | orderBy: 'dateObjectShowTime'">
     <img ng-if="movie.poster !== 'N/A'"  ng-click="selectMovie($index)"  class="center-block img-rounded img-responsive" ng-src="{{movie.poster}}"/>
     <img class="center-block img-rounded img-responsive"  ng-click="selectMovie($index)"  ng-if="movie.poster === 'N/A'" ng-src="../../Assets/default-poster.png">
