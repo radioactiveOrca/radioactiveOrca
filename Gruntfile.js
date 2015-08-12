@@ -5,15 +5,33 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        './client/App/**/*.js'
+        './client/App/**/*.js',
+        './server/**/*.js'
       ]
+    },
+
+    concat: {
+      dist: {
+        src: ['./client/App/**/*.js'],
+        dest: './client/build/scripts/moviedash.js'
+      }
+    },
+
+    uglify: {
+      targets: {
+        files: {
+          // dest : [src files]
+          './client/build/scripts/moviedash.min.js' : ['./client/build/scripts/moviedash.js']
+        }
+      }
+    },
+
+
+    karma: {
+      unit: {
+        configFile: './test/karma.conf.js'
+      }
     }
-
-    // uglify
-
-    // concat
-
-    // Karma tests
 
     // Protractor tests
   });
@@ -22,11 +40,14 @@ module.exports = function(grunt) {
   // Load plugins
   grunt.loadNpmTasks('grunt-notify'); // notifies via OS X Notification system
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Declare Tasks
   grunt.registerTask('test', ['jshint']);
 
-  // grunt.registerTask('build', ['test']);
+  grunt.registerTask('build', ['concat', 'uglify']);
 
   grunt.registerTask('default', ['test']);
 };
