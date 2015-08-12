@@ -71,7 +71,6 @@ module.exports = function(movies, callback) {
       film.title = body.Title;
       film.poster = body.Poster;
       film.synopsis = body.Plot;
-    
       callback(film);
     });
             // .on('response', function(response){
@@ -79,7 +78,7 @@ module.exports = function(movies, callback) {
               // var film = {};
               // film.title = response.body.Title;
               // film.poster = response.body.Poster;
-              // film.synposis = response.Plot;
+              // film.synopsis = response.Plot;
               // console.log(film)
               // callback(film);
             // });
@@ -90,12 +89,12 @@ module.exports = function(movies, callback) {
     
     //call callback on movie data 
 
-  }
+  };
   var addMovieToDB = function(imdbData, id) {
     //TODO:
     //Handle add to database;
     return movieCtrler.addMovie(imdbData, id);
-  }
+  };
   
   movieLookupHelper();
   

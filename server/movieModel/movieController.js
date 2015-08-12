@@ -11,13 +11,12 @@ module.exports = {
     // Checks if the movie exists and if it does
     // Sends the movie up to packer
 
-
     var newMovie = new movie({
       _id: id,
       title: imdbData.title,
       poster: imdbData.poster,
-      synposis: imdbData.synposis
-    })
+      synopsis: imdbData.synopsis
+    });
     newMovie.save(function(err, movie) {
       if (err) {
         console.log(err);
@@ -30,14 +29,14 @@ module.exports = {
     movie.findOne({_id: id})
     .exec(function(err, match) {
       if(err) {
-        console.log(err)
+        console.log(err);
         callback(null);
       } else if(match) {
         callback(match);
       } else {
         callback(null);
       }
-    })
+    });
   }
-}
+};
 
