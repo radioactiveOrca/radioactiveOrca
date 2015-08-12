@@ -9,7 +9,7 @@ angular.module('moviedash', [
   //'ngMock'
 
 ])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/landing");
 
@@ -29,4 +29,4 @@ angular.module('moviedash', [
       controller: 'DetailsCtrl',
       templateUrl: 'app/details/details.html'
     });
-});
+}]);

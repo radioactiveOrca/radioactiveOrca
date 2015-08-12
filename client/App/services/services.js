@@ -1,6 +1,6 @@
 var app = angular.module('moviedash.services', []);
 
-app.factory('MovieClient', function($http, selected) {
+app.factory('MovieClient', ['$http', 'selected', function($http, selected) {
   var setResults = function(results) {
     selected.setStorage('movieInfo', results);
   };
@@ -28,7 +28,7 @@ app.factory('MovieClient', function($http, selected) {
     setResults: setResults,
     getResults: getResults
   };
-});
+}]);
 
 app.factory('selected', function() {
 
@@ -51,7 +51,7 @@ app.filter('timeFromNow', function() {
   return function(input) {
     var delta = Math.round((input - new Date()) / 1000);
     if (delta < 0) {
-      return "Expired"
+      return "Expired";
     }
     var minutes = Math.round(delta / 60);
     var hours = Math.floor(minutes / 60);
@@ -80,5 +80,3 @@ app.filter('timeFromNow', function() {
     return hours.toString() + " hours, " + minutes.toString() + " minutes from now"
   };
 });
-
-
