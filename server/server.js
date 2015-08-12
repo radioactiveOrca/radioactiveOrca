@@ -24,7 +24,7 @@ db.once('open', function (callback) {
 app.use(express.static('client'));
 
 app.get('/', function(req, res) {
-  // requestHandler.getShows(94134);
+  //requestHandler.getShows(94134);
   res.send("SITE IS UP");
 });
 

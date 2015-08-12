@@ -1,8 +1,9 @@
 <div class="landing-cont">
-  <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
 
-    <div class="modality col-xs-6">
-      <label>Transportation Mode</label>
+  <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <div class="header col-xs-12"><h1>Movie <i class="dash">DASH</i></h1></div>
+    <div class="modality col-md-6 col-xs-12">
+      <label>Travel Mode</label>
       <select class="form-control" ng-model="modality">
         <option value="driving">Driving</option>
         <option value="walking">Walking</option>
@@ -11,7 +12,7 @@
       </select>
     </div>
 
-    <div class="leaving col-xs-6">
+    <div class="leaving col-md-6 col-xs-12">
       <label>Departure Time</label>
       <select class="form-control" ng-model="leavingTime">
         <option value="0">Now</option>
@@ -20,16 +21,21 @@
         <option value="7200000">2 hours</option>
       </select>
     </div>
-
+<div class="button col-xs-12">
     <div class="btn form-control btn-info button" ng-click="findLocation()">Use Current Location</div>
-
-    <center><div class="divider">OR</div></center>
+</div>
+    <div class="divider col-xs-12"><div class="or"><span class="circle-background">OR</span></div></div>
 
     <!-- shows form when geolocation errors out -->
+    <div class="zipcode col-xs-12">
     <form name="zipCode" ng-submit="zipSubmit()">
       <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" class="form-control" required>
+    </div>
       <!-- disables button if input is not valid -->
+      <div class="button zip-code-submit col-xs-12">
+
       <button class="btn btn-info form-control button" ng-disabled="zipCode.$invalid">Go</button>
+    </div>
     </form>
     <center><img class="spiffy" ng-if="isLoading" src="../../Assets/spiffygif_46x46.gif"><center>
     <div ng-if="error">{{error}}</div>
