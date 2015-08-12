@@ -11,7 +11,7 @@ angular.module('moviedash.details', [])
   $scope.destination = $scope.movie.theaterAddress;
   $scope.travelMode = selected.getStorage('modality') ? selected.getStorage('modality').toUpperCase() : 'DRIVING';
   $scope.departure_time = $scope.travelMode === 'TRANSIT' ?
-                          new Date(new Date().getTime() + parseInt(selected.getStorage('leavingTime'))) :
+                          new Date(parseInt(selected.getStorage('leavingTime'))) :
                           new Date(); // default to now
 
   $scope.transit_options = {departureTime: $scope.departure_time};
