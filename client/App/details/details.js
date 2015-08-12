@@ -1,6 +1,6 @@
 angular.module('moviedash.details', [])
 
-.controller('DetailsCtrl', function ($scope, selected) {
+.controller('DetailsCtrl', ['$scope', 'selected', function ($scope, selected) {
   // Code
 
   $scope.movie = selected.getStorage('movie');
@@ -15,4 +15,4 @@ angular.module('moviedash.details', [])
                           new Date(); // default to now
 
   $scope.transit_options = {departureTime: $scope.departure_time};
-});
+}]);
