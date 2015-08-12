@@ -1,26 +1,51 @@
 describe('LandingCtrl', function() {
-  describe('test', function() {
-    it('should be true', function() {
-      expect(true).toBe(true);
-    })
-  })
-  describe('Scope properties', function() {
-    it('should have a findLocation method', function() {
-      module('moviedash');
-      var $rootScope, $scope, $controller;
-      inject(function($injector) {
+  var $rootScope, $scope, $controller, $httpBackend;
+  beforeEach(module('moviedash'));
+  beforeEach(inject(function($injector) {
         //Gets the root scope from the injector
         $rootScope = $injector.get('$rootScope');
         //Creates a new scope
         $scope = $rootScope.$new();
-        //Gets the $controller object
+        //Gets the $controller service
         $controller = $injector.get('$controller');
+        //Gets the httpBackend service (used for faking http requests for unit testing)
+        $httpBackend = $injector.get('$httpBackend');
         //This populates the $scope with a new Landing Controller
-        //$controller('LandingCtrl', {$scope: $scope});
-      });
-      expect($scope).toBeDefined; 
+        $controller('LandingCtrl', {$scope: $scope});
+      }));
+
+  afterEach(function() {
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
+
+  describe('Scope properties', function() {
+    it('should have a findLocation method', function() {
+  
+      expect($scope.findLocation).toBeDefined();
+
     });
   });
+
+  describe('zipSubmit', function() {
+    it('should exist', function() {
+  
+      expect($scope.zipSubmit).toBeDefined();
+
+    });
+    it('should send an HTTP request', function() {
+      $scope.zip = 94122;
+      var fake = {results: [{geometry: {location: {lat: 37.7}, {lng: -122.4}}}]}};
+      //var lat = response.data.results[0].geometry.location.lat;
+      //var long = response.data.results[0].geometry.location.lng;
+      $httpBackend.expectGET('http://maps.googleapis.com/maps/api/geocode/json?address=' + 94122)
+      .respond(fake);
+      $scope.zipSubmit();
+      $httpBackend.flush();
+
+    });
+
+  })
   /*
   beforeEach(module('moviedash'));
   beforeEach(module('moviedash.landing'));
