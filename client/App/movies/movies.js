@@ -47,5 +47,5 @@ angular.module('moviedash.movies', [])
     }
     return hours.toString() + ":" + minutes;
   }  
-});
+}]);
 
