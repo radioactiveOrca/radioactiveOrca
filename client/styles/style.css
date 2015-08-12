@@ -112,9 +112,8 @@ select {
 }
 
 .movie-container img {
-  max-height: 72%;
+  max-height: 60%;
 }
-
 @media screen and (max-width: 480px) {
     .landing {
         top: 0;
