@@ -24,7 +24,7 @@ var format = function(params) {
   query.mode = params.mode.toLowerCase();
   query.departure_time = (query.mode === 'transit') ?
                           // convert departure time to seconds since January 1, 1970 UTC
-                         Math.round(((new Date()).getTime() + params.departure_time) / 1000) :
+                         Math.round((parseInt(params.departure_time)) / 1000) :
                           // departure_time is 'now' if travel mode is not transit
                          query.departure_time = 'now';
 
@@ -37,7 +37,12 @@ DistanceMatrix.prototype.query = function(params, callback) {
     if (err) {
       return console.error (err);
     }
-    callback(JSON.parse(body));
+    var parsedBody = JSON.parse(body);
+    if (parsedBody.status !== "OK") {
+      console.error("Error with Google Request:\n", parsedBody, parsedBody.status);
+    }
+
+    callback(parsedBody);
   });
 };
 

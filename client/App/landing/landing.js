@@ -50,7 +50,6 @@ app.controller('LandingCtrl', ['$scope', '$location', 'MovieClient', '$http',
       });
     };
 
-
     var handleResults = function(response) {
       $scope.isLoading = false;
       if (!response.data) {
