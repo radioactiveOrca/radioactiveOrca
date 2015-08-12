@@ -1,6 +1,6 @@
 <div class="landing-cont">
 
-  <div class="landing col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+  <div class="landing col-xs-12 col-sm-6 col-sm-offset-3">
     <div class="header col-xs-12"><h1>Movie <i class="dash">DASH</i></h1></div>
     <div class="modality col-md-6 col-xs-12">
       <label>Travel Mode</label>
@@ -29,7 +29,7 @@
     <!-- shows form when geolocation errors out -->
     <div class="zipcode col-xs-12">
     <form name="zipCode" ng-submit="zipSubmit()">
-      <input ng-model="zip" type="number" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" class="form-control" required>
+      <input ng-model="zip" type="tel" pattern="([1-9])+(?:-?\d){4,}" placeholder="Enter your zipcode" class="form-control" required>
     </div>
       <!-- disables button if input is not valid -->
       <div class="button zip-code-submit col-xs-12">
