@@ -13,16 +13,16 @@ angular.module('moviedash.movies', [])
 
   $scope.movies = MovieClient.getResults().data;
 
-  $scope.showTrailer = function(index) {
-
-    var link = $scope.movies[index].trailerLink;
+  $scope.showTrailer = function(movie) {
+    var link = movie.trailerLink;
+  
 
     if (link !== false) {
       var videoId = link.slice(link.indexOf('=') + 1);
       var embededUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
       
 
-      $scope.title = $scope.movies[index].movieName;
+      $scope.title = movie.movieName;
       $scope.trailerUrl = $sce.trustAsResourceUrl(embededUrl);
 
       $scope.$modalInstance = $modal.open({

@@ -3,6 +3,7 @@
   <div class="movie-container col-sm-4 col-xs-12" ng-repeat="movie in movies | orderBy: 'dateObjectShowTime'">
     <img ng-if="movie.poster !== 'N/A'"  ng-click="selectMovie($index)"  class="center-block img-rounded img-responsive" ng-src="{{movie.poster}}"/>
     <img class="center-block img-rounded img-responsive"  ng-click="selectMovie($index)"  ng-if="movie.poster === 'N/A'" ng-src="../../Assets/default-poster.png">
+  
     <div class="movie-snippet text-center">
       <h2>{{movie.movieName}}</h2>
       <p class="text-muted">{{movie.theaterName}}</p>
@@ -11,7 +12,7 @@
       <h4>{{movie.dateObjectShowTime | timeFromNow}}</h4>
 
       <h4>{{movie.showTime}}</h4>
-      <label class="btn btn-primary" ng-disabled="{{ movie.trailerLink === false }}" ng-click="showTrailer($index)">Show Trailer</label>
+      <label class="btn btn-primary" ng-disabled="{{ movie.trailerLink === false }}" ng-click="showTrailer(movie)">Show Trailer</label>
     </div>
   </div>
 </div>
