@@ -29,8 +29,7 @@ exports.getShows = function(req,res) {
 
       // pack info to send back to client
       packer(filteredResults, function(movies) {
-        console.log("Packed results", movies)
-        res.send(movies);
+        res.status(200).send(movies);
       });
 
     });

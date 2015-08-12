@@ -16,7 +16,7 @@ angular.module('moviedash.movies', [])
   $scope.showTrailer = function(movie) {
     var link = movie.trailerLink;
   
-
+    console.log(movie)
     if (link !== false) {
       var videoId = link.slice(link.indexOf('=') + 1);
       var embededUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
