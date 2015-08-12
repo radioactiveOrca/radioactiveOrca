@@ -10,7 +10,7 @@ var appendTransitTimes = function(query, theaters, callback) {
     origins: query.location,
     destinations: destinations,
     mode: query.modality,
-    departure_time: query.leavingTime // sent as milliseconds as string
+    departure_time: query.leavingTime // sent as milliseconds
   };
   // query with params
   googleapi.query(params, function(googleResults) {
