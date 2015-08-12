@@ -17,16 +17,16 @@ angular.module('moviedash', [
     .state('landing', {
       url : '/landing',
       controller: 'LandingCtrl',
-      templateUrl: 'app/landing/landing.html'
+      templateUrl: '/App/landing/landing.html'
     })
     .state('movies', {
       url : '/movies',
       controller: 'MoviesCtrl',
-      templateUrl: 'app/movies/movies.html'
+      templateUrl: '/App/movies/movies.html'
     })
     .state('details', {
       url: '/details',
       controller: 'DetailsCtrl',
-      templateUrl: 'app/details/details.html'
+      templateUrl: '/App/details/details.html'
     });
 }]);
