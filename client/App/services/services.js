@@ -58,25 +58,25 @@ app.filter('timeFromNow', function() {
     minutes = minutes - hours * 60;
     if(hours === 0) { 
       if (minutes === 1) {
-        return "1 minute from now";
+        return "in 1 minute";
       } 
-      return minutes.toString() + " minutes from now";
+      return "in " + minutes.toString() + " minutes";
     } 
     if (hours === 1) {
       if (minutes === 0) {
-        return "1 hour from now";
+        return "in 1 hour";
       }
       if (minutes === 1) {
-        return "1 hour, 1 minute from now";
+        return "in 1 hour, 1 minute";
       }
-      return "1 hour, " + minutes + " minutes from now";
+      return "in 1 hour, " + minutes + " minutes";
     }
     if (minutes === 0) {
-      return hours.toString() + " hours from now";
+      return "in " + hours.toString() + " hours";
     }
     if (minutes === 1) {
-      return hours.toString() + " hours, 1 minute from now";
+      return "in " + hours.toString() + " hours, 1 minute";
     }
-    return hours.toString() + " hours, " + minutes.toString() + " minutes from now"
+    return "in " + hours.toString() + " hours, " + minutes.toString() + " minutes";
   };
 });
