@@ -18,18 +18,15 @@ angular.module('moviedash', [
       url : '/landing',
       controller: 'LandingCtrl',
       templateUrl: '/App/landing/landing.html'
-
     })
     .state('movies', {
       url : '/movies',
       controller: 'MoviesCtrl',
       templateUrl: '/App/movies/movies.html'
-
     })
     .state('details', {
       url: '/details',
       controller: 'DetailsCtrl',
       templateUrl: '/App/details/details.html'
-
     });
 }]);
