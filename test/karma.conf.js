@@ -19,6 +19,7 @@ module.exports = function(config) {
       '../client/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       '../client/bower_components/angular-mocks/angular-mocks.js',
       '../client/bower_components/ngmap/build/scripts/ng-map.js',
+      '../client/bower_components/angular-bootstrap/ui-bootstrap.js',
       '../client/App/app.js',
       '../client/App/landing/landing.js',
       '../client/App/services/services.js',
