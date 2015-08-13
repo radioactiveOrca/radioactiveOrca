@@ -1,11 +1,14 @@
 {
   "name": "moviedash",
   "version": "1.0.0",
+  "engines": {
+    "node": "0.12.4"
+  },
   "description": "Plan your movie night",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "./node_modules/bower/bin/bower install && ./node_modules/grunt-cli/bin/grunt build"
+    "postinstall": "bash ./post_install.sh"
   },
   "repository": {
     "type": "git",
