@@ -3,6 +3,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    nodemon: {
+      dev: {
+        script: "./server/server.js"
+      }
+    },
+
     jshint: {
       files: [
         './*.js',
@@ -27,14 +33,39 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      scripts: {
+        files: [
+          './client/App/**/*.js',
+          './server/**/*.js'
+        ],
+        tasks: [
+          'jshint',
+          'concat',
+          'uglify'
+        ]
+      }
+    },
 
     karma: {
       unit: {
         configFile: './test/karma.conf.js'
       }
+    },
+
+    shell: {
+      prodServer: {
+        command: 'git push heroku master',
+        options: {
+          stdout: true,
+          strerr: true,
+          failOnError: true
+        }
+      }
     }
 
     // Protractor tests
+    // TODO
   });
 
 
@@ -43,13 +74,32 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-nodemon');
 
-  ////////////////
+  //////////////////
   // Declare Tasks
-  ////////////////
+  //////////////////
 
-  grunt.registerTask('test', ['jshint']);
+  // Development Server
+  grunt.registerTask('server-dev', function (target) {
+    // Running nodejs in a different process and displaying output on the main console
+    var nodemon = grunt.util.spawn({
+         cmd: 'grunt',
+         grunt: true,
+         args: 'nodemon'
+    });
+    nodemon.stdout.pipe(process.stdout);
+    nodemon.stderr.pipe(process.stderr);
+
+    grunt.task.run([ 'watch' ]);
+  });
+
+  grunt.registerTask('test', [
+    'jshint'
+    ]);
 
   grunt.registerTask('build', [
     'test',
@@ -58,8 +108,18 @@ module.exports = function(grunt) {
     ]);
 
   grunt.registerTask('deploy', [
-    'build'
+    'build',
+    'upload'
     ]);
 
-  grunt.registerTask('default', ['test', 'build']);
+  grunt.registerTask('upload', function(n) {
+    if(grunt.option('prod')) {
+      // grunt upload -prod will run the following
+      grunt.task.run([ 'shell' ]);
+    } else {
+      grunt.task.run([ 'server-dev' ]);
+    }
+  });
+
+  grunt.registerTask('default', ['server-dev']);
 };
