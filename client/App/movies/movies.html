@@ -8,7 +8,7 @@
     <img class="center-block img-rounded img-responsive"  ng-click="selectMovie(movie)"  ng-if="movie.poster === 'N/A'" ng-src="../../Assets/default-poster.png">
   
     <div class="movie-snippet text-center">
-      <h2>{{movie.movieName}}</h2>
+      <h2>{{movie.movieName | limitTo: 50}}</h2>
       <p class="text-muted">{{movie.theaterName}}</p>
       <p><strong>Travel Time:</strong> {{movie.transitTime}}</p>
 
