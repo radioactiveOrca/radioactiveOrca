@@ -56,8 +56,6 @@ angular.module('moviedash.details', [])
     // If reminder is used, the session stores the specific movie, theater, and time as a combined ID
     // And stores an array of values assigned to that ID.
     selected.setStorage(uniqueMovieId, [$scope.btn, timeoutID, alreadyClicked]);
-
-    return false;
   };
 
   // Navigation info
