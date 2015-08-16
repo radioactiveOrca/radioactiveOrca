@@ -15,17 +15,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      // client library files
       '../client/bower_components/angular/angular.js',
       '../client/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       '../client/bower_components/angular-mocks/angular-mocks.js',
       '../client/bower_components/ngmap/build/scripts/ng-map.js',
       '../client/bower_components/angular-bootstrap/ui-bootstrap.js',
-      '../client/App/app.js',
-      '../client/App/landing/landing.js',
-      '../client/App/services/services.js',
-      '../client/App/movies/movies.js',
-      '../client/App/details/details.js',
-      '*.js'
+      '../client/lib/ngmap/build/scripts/ng-map.js',
+      // client src files
+      '../client/App/**/*.js',
+
+      // spec files
+      './*.js'
     ],
 
 
