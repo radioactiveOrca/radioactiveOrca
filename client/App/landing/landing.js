@@ -1,7 +1,7 @@
 var app = angular.module('moviedash.landing', []);
 
-app.controller('LandingCtrl', ['$scope', '$location', 'MovieClient', '$http', '$state',
-  function ($scope, $location, MovieClient, $http, $state) {
+app.controller('LandingCtrl', ['$scope', '$location', 'MovieClient', '$http',
+  function ($scope, $location, MovieClient, $http) {
     $scope.modality = "driving";
     $scope.leavingTime = "0";
 
