@@ -13,8 +13,18 @@ module.exports = function(grunt) {
       files: [
         './*.js',
         './client/App/**/*.js',
-        './server/**/*.js'
+        './server/**/*.js',
+        './test/**/*.js'
       ]
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['./test/server/*.js']
+      }
     },
 
     concat: {
@@ -75,6 +85,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha-test');
   // grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
@@ -98,16 +109,17 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', [
-    'jshint'
+    'jshint',
+    'mochaTest'
     ]);
 
   grunt.registerTask('build', [
-    'test',
     'concat',
     'uglify'
     ]);
 
   grunt.registerTask('deploy', [
+    'test',
     'build',
     'upload'
     ]);
