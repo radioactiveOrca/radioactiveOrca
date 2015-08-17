@@ -36,6 +36,10 @@ app.controller('LandingCtrl', ['$scope', '$location', 'MovieClient', '$http',
       $scope.isLoading = true;
       $scope.error = null;
       $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).then(function (response) {
+        if (!response) {
+          $scope.error = 'Not a valid zipcode';
+          return;
+        }
         var lat = response.data.results[0].geometry.location.lat;
         var long = response.data.results[0].geometry.location.lng;
         sendQuery(lat, long);
