@@ -114,12 +114,12 @@ module.exports = function(grunt) {
     ]);
 
   grunt.registerTask('build', [
+    'test',
     'concat',
     'uglify'
     ]);
 
   grunt.registerTask('deploy', [
-    'test',
     'build',
     'upload'
     ]);
