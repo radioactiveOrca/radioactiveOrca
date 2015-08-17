@@ -116,6 +116,10 @@ select {
   height: 550px;
   margin-bottom: 50px;
   position: relative;
+  padding-bottom: 50px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
 }
 
 .movie-container img {
@@ -125,7 +129,7 @@ select {
 .btn-trailer {
   width: 200px;
   position: absolute;
-  bottom: 0;
+  bottom: 25px;
   left: 0;
   right:0;
   margin-left: auto;
