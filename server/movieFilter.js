@@ -31,7 +31,7 @@ module.exports = function(theaters, leavingTime) {
     theater.movies.forEach(function(movie) {
       movie.showtimes.forEach(function(showtime) {
 
-      var convertedShowTime = convertShowTime(showtime);
+      var convertedShowTime = convertShowTime(showtime, timeOffset);
 
         if (minTargetTime <= convertedShowTime && convertedShowTime <= maxTargetTime) {
           //extract imdb id from url
