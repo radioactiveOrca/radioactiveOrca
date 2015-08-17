@@ -21,7 +21,7 @@ describe('LandingCtrl', function() {
 
   describe('Scope properties', function() {
     it('should have a findLocation method', function() {
-  
+
       expect($scope.findLocation).toBeDefined();
 
     });
@@ -29,7 +29,7 @@ describe('LandingCtrl', function() {
 
   describe('zipSubmit', function() {
     it('should exist', function() {
-  
+
       expect($scope.zipSubmit).toBeDefined();
 
     });
@@ -46,7 +46,7 @@ describe('LandingCtrl', function() {
 
     });
     */
-  })
+  });
   /*
   beforeEach(module('moviedash'));
   beforeEach(module('moviedash.landing'));
@@ -64,7 +64,7 @@ describe('LandingCtrl', function() {
   //you need to inject dependencies first
   beforeEach(inject(function($rootScope, $injector) {
     $scope = $rootScope.$new();
-    $controller = $injector.get('$controller');   
+    $controller = $injector.get('$controller');
   }));
 
   it('$scope should be defined', function() {

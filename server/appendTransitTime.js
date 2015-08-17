@@ -7,7 +7,7 @@ var appendTransitTimes = function(query, theaters, callback) {
 
   // create params with our options
   var params = {
-    origins: query.location,
+    origin: query.location,
     destinations: destinations,
     mode: query.modality,
     departure_time: query.leavingTime // sent as milliseconds
