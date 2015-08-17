@@ -1,7 +1,7 @@
 var qs = require('querystring');
 var request = require('request');
 
-if(!process.env.PORT) {
+if(!process.env.GOOGLEKEY) {
   var secret = require('./googleKey');
 }
 
