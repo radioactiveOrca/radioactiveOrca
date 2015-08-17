@@ -3,9 +3,6 @@ var q = require('q');
 var appendTransitTime= require('./appendTransitTime');
 var filter = require('./movieFilter');
 var packer = require('./packer');
-// var tzwhere = require('tzwhere');
-// tzwhere.init();
-
 
 // function to enter lng & lat into showtimes parameter
 
@@ -22,10 +19,7 @@ exports.getShows = function(req,res) {
     }
     // send req.body (has loc and modality info) to distance matrix
     appendTransitTime(req.body, theaters, function(results) {
-      //filter movies for correct times
-      // var locArray = loc.split(',');
-      // console.log(tzwhere.tzOffsetAt(37.783771, -122.40920990000001))
-      // var offset = tzwhere.tzOffsetAt(parseFloat(locArray[0]) , parseFloat(locArray[1]));
+      console.log(req.body.today)
       var filteredResults = filter(results, req.body.leavingTime);
       if (filteredResults.length === 0) {
         res.send(null);
