@@ -148,6 +148,16 @@ select {
   top: 5%;
 }
 
+.movie-info {
+  position: relative;
+}
+
+.reminder-btn {
+  position: absolute;
+  left: 65%;
+  bottom: 2%;
+}
+
 @media screen and (max-width: 768px) {
     .landing {
         top: 0;
