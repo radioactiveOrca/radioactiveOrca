@@ -41,6 +41,7 @@
     "q": "^1.4.1",
     "request": "^2.60.0",
     "showtimes": "^1.7.0",
+    "tzwhere": "^1.0.0",
     "url-parse": "^1.0.2"
   },
   "devDependencies": {
