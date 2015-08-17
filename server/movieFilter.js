@@ -1,6 +1,6 @@
 //changes showtime into date object
 var convertShowTime = function(showtime, today) {
-  var today = new Date(today);
+  today = new Date(today);
   //splitting showtime on non numerical characters
   var timeArray = showtime.split(/\D/);
   //if time is in the evening
@@ -22,7 +22,7 @@ var convertShowTime = function(showtime, today) {
 module.exports = function(theaters, leavingTime, today) {
   var results = [];
   theaters.forEach(function(theater) {
-    //adds transit time to leaving time 
+    //adds transit time to leaving time
     var targetTime = (theater.transitTimeSeconds * 1000) + leavingTime;
     //mintime is target plus 5 minutes
     minTargetTime = targetTime + 300000;
