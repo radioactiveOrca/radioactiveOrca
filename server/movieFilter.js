@@ -37,7 +37,17 @@ module.exports = function(theaters, leavingTime) {
           //extract imdb id from url
           var imdbArr = movie.imdb.split('/');
           var imdb = imdbArr[imdbArr.length - 2];
-          results.push({id: imdb, dateObjectShowTime: convertedShowTime, showTime: showtime, movieName: movie.name, transitTime: theater.transitTime, theaterName: theater.name, imdbLink: movie.imdb, trailerLink: movie.trailer, theaterAddress: theater.address, rating: movie.rating});
+          results.push({
+            id: imdb,
+            dateObjectShowTime: convertedShowTime,
+            showTime: showtime,
+            movieName: movie.name,
+            transitTime: theater.transitTime,
+            theaterName: theater.name,
+            imdbLink: movie.imdb,
+            trailerLink: movie.trailer,
+            theaterAddress: theater.address,
+            rating: movie.rating});
         }
       });
     });
