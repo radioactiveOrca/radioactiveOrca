@@ -26,7 +26,7 @@ Movie Dash works in a browser. Just open it up.
 
 - Node 0.10.x
 - Express 4.13.3
-- Angular 
+- Angular
 
 ## Development
 
@@ -39,9 +39,20 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
-cd client
-bower install
 ```
+
+### Grunt
+
+To build and run local server, from root directory:
+```sh
+grunt
+```
+
+To deploy to Heroku:
+```sh
+grunt deploy -prod
+```
+
 
 ### Roadmap
 
