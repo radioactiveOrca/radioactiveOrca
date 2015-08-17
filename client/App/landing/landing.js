@@ -44,12 +44,12 @@ app.controller('LandingCtrl', ['$scope', '$location', 'MovieClient', '$http',
 
     var sendQuery = function(lat, long) {
       $scope.location = lat + ', ' + long;
-      var leavingMS = Date.now() + parseInt($scope.leavingTime);
+      var leavingMS = new Date().getTime() + parseInt($scope.leavingTime);
       $scope.query = {
         location: $scope.location,
         modality : $scope.modality,
         leavingTime: leavingMS,
-        today: new Date().toString()
+        offset: new Date().getTimezoneOffset()
       };
       MovieClient.getTheaters($scope.query).then(function(response) {
         handleResults(response);
