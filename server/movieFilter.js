@@ -1,6 +1,6 @@
 //changes showtime into date object
 var convertShowTime = function(showtime, today) {
-  var today = new Date(today);
+  today = new Date(today);
   //splitting showtime on non numerical characters
   var timeArray = showtime.split(/\D/);
   //if time is in the evening
