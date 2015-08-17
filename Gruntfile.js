@@ -133,5 +133,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['server-dev']);
+  grunt.registerTask('default', ['deploy']);
 };
