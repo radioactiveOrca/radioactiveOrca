@@ -1,5 +1,5 @@
 //changes showtime into date object
-var convertShowTime = function(showtime, leavingTime, offset) {
+var convertShowTime = function(showtime, leavingTime) {
   today = new Date(leavingTime);
   //splitting showtime on non numerical characters
   var timeArray = showtime.split(/\D/);
@@ -16,21 +16,26 @@ var convertShowTime = function(showtime, leavingTime, offset) {
   }
   //change minutes to showtime minutes
   today.setMinutes(+timeArray[1]);
-  return today.getTime() + (offset * 60000);
+  console.log("SHOWTIME", new Date(today.getTime()));
+  return today.getTime();
 };
 
-module.exports = function(theaters, leavingTime, offset) {
+module.exports = function(theaters, leavingTime, timeArray) {
   var results = [];
+  var today = new Date(leavingTime);
+  today.setHours(timeArray[0]);
+  today.setMinutes(timeArray[1]);
   theaters.forEach(function(theater) {
     //adds transit time to leaving time
-    var targetTime = (theater.transitTimeSeconds * 1000) + leavingTime;
+    var targetTime = (theater.transitTimeSeconds * 1000) + today.getTime();
+    console.log("TARGET", new Date(targetTime));
     //mintime is target plus 5 minutes
     minTargetTime = targetTime + 300000;
     //maxtime is target plus 35 minutes
     maxTargetTime = targetTime + 2100000;
     theater.movies.forEach(function(movie) {
       movie.showtimes.forEach(function(showtime) {
-      var convertedShowTime = convertShowTime(showtime, leavingTime, offset);
+      var convertedShowTime = convertShowTime(showtime, leavingTime);
 
         if (minTargetTime <= convertedShowTime && convertedShowTime <= maxTargetTime) {
           //extract imdb id from url
