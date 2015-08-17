@@ -48,7 +48,6 @@ angular.module('moviedash.movies', [])
 
   $scope.isFinalRow = function(index, size) {
     var finalRow = size % 3 || 3;
-    console.log("Checking index " + index + " and size " + size + " and finalRow " + finalRow);
     return size - index <= finalRow;
   };
 }]);
