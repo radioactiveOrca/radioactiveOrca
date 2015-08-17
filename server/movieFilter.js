@@ -16,7 +16,6 @@ var convertShowTime = function(showtime, leavingTime, offset) {
   }
   //change minutes to showtime minutes
   today.setMinutes(+timeArray[1]);
-  console.log("SHOWTIME", new Date(today.getTime() + (offset * 60000)));
   return today.getTime() + (offset * 60000);
 };
 
@@ -25,7 +24,6 @@ module.exports = function(theaters, leavingTime, offset) {
   theaters.forEach(function(theater) {
     //adds transit time to leaving time
     var targetTime = (theater.transitTimeSeconds * 1000) + leavingTime;
-    console.log("TARGET TIME", new Date(targetTime));
     //mintime is target plus 5 minutes
     minTargetTime = targetTime + 300000;
     //maxtime is target plus 35 minutes
