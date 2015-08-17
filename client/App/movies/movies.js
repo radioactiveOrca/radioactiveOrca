@@ -45,5 +45,10 @@ angular.module('moviedash.movies', [])
     }
     return hours.toString() + ":" + minutes;
   };
+
+  $scope.isFinalRow = function(index, size) {
+    var finalRow = size % 3 || 3;
+    return size - index <= finalRow;
+  };
 }]);
 
