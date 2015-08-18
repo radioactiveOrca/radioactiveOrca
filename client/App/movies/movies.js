@@ -1,7 +1,7 @@
 angular.module('moviedash.movies', [])
 
 .controller('MoviesCtrl', ['$scope', '$location', 'MovieClient', 'selected', 'convert', '$modal', '$sce',
-  function ($scope, $location, MovieClient, selected, $modal, $sce) {
+  function ($scope, $location, MovieClient, selected, convert, $modal, $sce) {
   // Code
   //STUB: Replace with dynamic data
 
@@ -11,7 +11,7 @@ angular.module('moviedash.movies', [])
     $location.path('/details');
   };
   $scope.localShowtime = function(showtime) {
-    return convert.convertShowTime(showtime);
+    return convert.convertShowTime(showtime, selected.getStorage('leavingTime'));
   };
   $scope.movies = MovieClient.getResults().data;
 
