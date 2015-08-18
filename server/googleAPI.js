@@ -1,7 +1,7 @@
 var qs = require('querystring');
 var request = require('request');
 
-if(!process.env.GOOGLEKEY) {
+if(!process.env.GOOGLEBACKUP) {
   var secret = require('./googleKey');
 }
 
@@ -21,7 +21,7 @@ DistanceMatrix.prototype._format = function(params) {
 
   var query = {};
   try {
-    query.key = process.env.GOOGLEKEY || secret.google;
+    query.key = process.env.GOOGLEBACKUP || secret.googlebackup;
     query.origins = params.origin.toString(); // change to string
     query.origins = query.origins.replace(/[\s]/g, ''); // get rid of spaces
     query.destinations = params.destinations.join('|');
