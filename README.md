@@ -43,12 +43,17 @@ sudo npm install -g bower
 npm install
 ```
 
-### Acquire a Google API Key
+### Acquire API keys
 
 Visit Google's [developer console](https://console.developers.google.com/project) to obtain an API key.
-Create a file on the root directory and paste the following:
+Create a file on in ./server named googleKey.js and paste the following:
 ```js
 module.exports.google = GOOGLE_API_KEY;
+```
+
+In the same file, add an API key for The Movie Database ([TMDb](https://www.themoviedb.org/documentation/api?language=en)) :
+```js
+module.exports.moviedb = MOVIE_DB_API;
 ```
 
 ### Grunt
