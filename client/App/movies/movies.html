@@ -14,7 +14,7 @@
       <p><strong>Travel Time:</strong> {{movie.transitTime}}</p>
 
       <h4>
-        <strong>Showtime:</strong> {{movie.showTime}} <small class="text-muted">({{movie.dateObjectShowTime | timeFromNow}})</small>
+        <strong>Showtime:</strong> {{movie.showTime}} <small class="text-muted">({{localShowtime(movie.showTime) | timeFromNow}})</small>
       </h4>
     </div>
 

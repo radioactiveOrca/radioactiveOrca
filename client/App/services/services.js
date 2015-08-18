@@ -44,6 +44,31 @@ app.factory('selected', function() {
   };
 });
 
+app.factory('convert', ['selected', function (selected) {
+  var convertShowTime = function(showTime) {
+    today = new Date(selected.getStorage(leavingTime));
+    var timeArray = showtime.split(/\D/);
+    if (showtime.indexOf('pm') !== -1 && +timeArray[0] !== 12) {
+      today.setHours(+timeArray[0] + 12);
+      //if time is midnight
+    } else if (showtime.indexOf('am') !== -1 && +timeArray[0] === 12) {
+      today.setHours(0);
+      today.setDate(today.getDate() + 1);
+    } else {
+      //change hours to showtime hour
+      today.setHours(+timeArray[0]);
+    }
+    //change minutes to showtime minutes
+    today.setMinutes(+timeArray[1]);
+    //console.log("SHOWTIME", new Date(today.getTime() + (offset * 60000)));
+    //return today.getTime() + (offset * 60000);
+    return today.getTime();
+  };
+
+  return { convertShowTime: convertShowTime };
+
+}]);
+
 //This filter is meant to be used on a javascript Date object. It
 //replaces the date object with a string describing that time in relative
 //terms like "5 minutes from now"
