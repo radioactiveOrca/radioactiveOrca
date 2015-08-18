@@ -32,6 +32,8 @@ Movie Dash works in a browser. Just open it up.
 
 8/5/15: Development begun.
 
+## Getting Started
+
 ### Installing Dependencies
 
 From within the root directory:
@@ -39,6 +41,14 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
+```
+
+### Acquire a Google API Key
+
+Visit Google's [developer console](https://console.developers.google.com/project) to obtain an API key.
+Create a file on the root directory and paste the following:
+```js
+module.exports.google = GOOGLE_API_KEY;
 ```
 
 ### Grunt
