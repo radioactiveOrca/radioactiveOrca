@@ -2,6 +2,8 @@
 
 Make finding a movie to watch a breeze!
 
+![alt tag](http://i.imgur.com/Mb2JiSL.png)
+
 ## Team
 
   - __Product Owner__: Alex Castle
