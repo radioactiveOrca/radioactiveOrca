@@ -1,5 +1,16 @@
+/**
+ * A module that appends the transit time to a list of theaters
+ * @module appendTransitTimes
+*/
+
 var googleapi = require('./googleAPI');
 
+/**
+ * Appends the transit time to a list of theaters
+ * @param {object} query - query object containing info to pass to google's distance matrix api
+ * @param {array} theaters - list of theaters
+ * @param {queryCallback} - The callback that handles the mutated theaters object
+*/
 var appendTransitTimes = function(query, theaters, callback) {
   var destinations = theaters.map(function(theater) {
     return theater.address;
@@ -23,6 +34,10 @@ var appendTransitTimes = function(query, theaters, callback) {
     });
 
     callback(theaters);
+    /**
+     * @callback queryCallback
+     * @param {list} theaters - list of theaters with appended transit times
+    */
   });
 
 };

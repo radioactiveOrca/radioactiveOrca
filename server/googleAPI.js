@@ -1,23 +1,32 @@
+/**
+ * A module that interfaces with the Google Distance Matrix API
+ * @module DistanceMatrix
+*/
+
 var qs = require('querystring');
 var request = require('request');
 
 if(!process.env.GOOGLEBACKUP) {
   var secret = require('./googleKey');
 }
-
+/** Google API Request URL */
 var DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
 
-var DistanceMatrix = function() {
-  // constructor
-};
+
+/**
+ * @constructor
+ */
+var DistanceMatrix = function() {};
 
 var travelModes = ['driving', 'walking', 'bicycling', 'transit'];
 
-
+/**
+ * Formats a params object and returns a querystring in request to google api
+ * Formatting guidelines: https://developers.google.com/maps/documentation/distancematrix/intro
+ * @param {object} params - object that holds parameters that have not been formatted
+ * @returns {string} query that holds all request parameters formatted per Google's API docs
+*/
 DistanceMatrix.prototype._format = function(params) {
-  /*query reference:
-    https://developers.google.com/maps/documentation/distancematrix/intro
-  */
 
   var query = {};
   try {
@@ -42,6 +51,11 @@ DistanceMatrix.prototype._format = function(params) {
   return qs.stringify(query);
 };
 
+/**
+ * Makes the query to the google distance matrix api
+ * @param {object} params - object that holds parameters that have not been formatted
+ * @param {googleApiCallback} callback - callback to handle results from google
+*/
 DistanceMatrix.prototype.query = function(params, callback) {
   var querystring = this._format(params);
   request(DISTANCE_API_URL + querystring, function(err, response, body) {
@@ -54,6 +68,10 @@ DistanceMatrix.prototype.query = function(params, callback) {
     }
 
     callback(parsedBody);
+    /**
+     * @callback googleApiCallback
+     * @param {JSON} parsedBody - Results from Google API in JSON format
+    */
   });
 };
 
